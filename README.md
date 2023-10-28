@@ -45,8 +45,8 @@
 <div style={{ display: flex, flex-direction: row }}>
   <p>Projeto em react native, usando typescript, onde foi realizado, uma tela de adição de "sonhos", uma tela que lista os sonhos em cards ordenandos por data e mostra as fases da lua através de uma api, um modal para cadastro de novos sonhos, e uma tela que mostra detalhes sonhos. Cada card contém um botão de favoritar e os cards podem ser filtrados por esse parâmetro.</p>
 
-  <!-- TODO: Ver screenshots -->
-  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/Images/Splashscreen.png?raw=true" alt="Tela Placeholder" width="200" height="500">
+  <!-- TODO: Ter screenshots maneiros -->
+  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Splashscreen.png?raw=true" alt="Tela Placeholder" width="200" height="500">
  </div>
 
 
