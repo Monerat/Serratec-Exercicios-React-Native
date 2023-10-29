@@ -1,32 +1,64 @@
-import { StyleSheet, Text, View, StatusBar, ImageBackground } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { Text, View, ImageBackground, Image, TextInput, TouchableOpacity } from "react-native";
+
+import {styles} from "./styles"
 
 import BgImage from "./src/assets/bg-padrao.png";
+import PupilCatIcon from "./src/assets/pupil-cat.png";
+import SleepingCat from "./src/assets/sleeping-icon.png";
 
 export default function App() {
    return (
-      <ImageBackground source={BgImage} style={styles.bgImage} imageStyle={{ position: 'absolute', left: 0 }}>
-         <View style={styles.container}>
-            <Text style={{ color: "white" }}>Open up App.js to start working on your app!</Text>
+      <ImageBackground source={BgImage} style={styles.bgImage} imageStyle={{ position: "absolute", left: 0 }}>
+         <StatusBar style="light" />
+         <View style={styles.sonhoContainer}>
+            <Image source={SleepingCat} style={{ tintColor: "white" }} />
+            <Text style={styles.textBase}>Ops, parece que não tem nenhum sonho aqui</Text>
+         </View>
+
+         <View style={styles.formContainer}>
+            <View style={styles.formInputContainer}>
+               <Text style={styles.inputLabel}>Adicione um sonho:</Text>
+               <TextInput
+                  style={styles.textInput}
+                  placeholder={"Digite um título para o seu sonho"}
+                  placeholderTextColor="#D9D9D980"
+               />
+            </View>
+            <View style={styles.formInputHorizontal}>
+               <Text style={styles.inputLabel}>Data:</Text>
+               <TextInput
+                  style={styles.textInput}
+                  placeholder={new Date().toLocaleDateString()}
+                  placeholderTextColor="#D9D9D980"
+               />
+            </View>
+            <View style={styles.formInputContainer}>
+               <Text style={styles.inputLabel}>Descrição:</Text>
+               <TextInput
+                  multiline
+                  style={styles.textMultilineInput}
+                  placeholder={"Descreva seu sonho"}
+                  placeholderTextColor="#D9D9D980"
+               />
+            </View>
+            <View style={styles.formInputHorizontal}>
+               <Text style={styles.inputLabel}>Tag:</Text>
+               <TextInput
+                  style={styles.textInput}
+                  placeholder={"Digite uma tag"}
+                  placeholderTextColor="#D9D9D980"
+               />
+               <TouchableOpacity activeOpacity={0.7} style={styles.buttonIcon}>
+                  <Image source={PupilCatIcon}
+                  style={{height: 36, width: 36}}
+                  />
+               </TouchableOpacity>
+            </View>
+            <TouchableOpacity activeOpacity={0.7} style={styles.button}>
+               <Text style={styles.buttonText}>Salvar</Text>
+            </TouchableOpacity>
          </View>
       </ImageBackground>
    );
 }
-
-const styles = StyleSheet.create({
-   bgImage: {
-      flex: 1,
-      paddingHorizontal: 8,
-      paddingTop: StatusBar.currentHeight,
-      paddingBottom: 4,
-
-      position: "relative",
-
-      backgroundColor: "white",
-   },
-   container: {
-      flex: 1,
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-   },
-});
