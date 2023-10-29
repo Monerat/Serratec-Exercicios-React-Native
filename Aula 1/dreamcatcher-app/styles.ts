@@ -97,12 +97,15 @@ export const styles = StyleSheet.create({
 
       borderRadius: 30,
       backgroundColor: "#DD8EEA",
+
+      elevation: 3
    },
-   buttonIcon: {  
-    padding: 6,
+   buttonIcon: {
+      padding: 6,
 
       borderRadius: 50,
       backgroundColor: "#DD8EEA",
+      elevation: 3
    },
    buttonText: {
       color: "white",
