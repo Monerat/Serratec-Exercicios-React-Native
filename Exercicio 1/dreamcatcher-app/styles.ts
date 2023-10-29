@@ -1,18 +1,21 @@
 import { StatusBar, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-   bgImage: {
+   bgImage:{
       position: "relative",
-      overflow: "scroll",
-
       flex: 1,
-      justifyContent: "space-around",
-      paddingHorizontal: 42,
-      paddingTop: StatusBar.currentHeight,
-      paddingBottom: 4,
-      gap: 28,
+   },
 
-      backgroundColor: "white",
+   scroll: {
+      flex: 1,
+      paddingHorizontal: 42,
+   },
+   contentContainer:{
+      minHeight: "100%",
+
+      justifyContent: "space-around",
+      paddingTop: StatusBar.currentHeight,
+      paddingBottom: 48,
    },
 
    sonhoContainer: {
@@ -58,9 +61,13 @@ export const styles = StyleSheet.create({
       color: "white",
    },
    textInput: {
+      minHeight: 32,
+
       flex: 1,
       paddingHorizontal: 14,
       paddingVertical: 7,
+
+      color: "white",
 
       borderRadius: 21,
       borderBottomWidth: 3.5,
