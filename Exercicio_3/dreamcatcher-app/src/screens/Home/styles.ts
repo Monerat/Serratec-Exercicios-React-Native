@@ -12,9 +12,8 @@ export const styles = StyleSheet.create({
       flex: 1,
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "flex-start",
       paddingTop: 28,
-      gap: 8,
    },
    textBase: {
       textAlign: "center",

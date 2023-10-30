@@ -1,4 +1,4 @@
-import {  View, Image, Text } from "react-native";
+import { View, Image, Text } from "react-native";
 
 import { Button } from "../../components/Button";
 
@@ -8,32 +8,34 @@ import { styles } from "./styles";
 import { useState } from "react";
 import { ModalSonho } from "../../components/Modais/ModalSonhos";
 
-
-export interface Sonho{
+export interface Sonho {
    title: string;
    data: string;
    descricao: string;
    tag: string;
-};
+}
 
 export const Home = () => {
    const [modalAberto, setModalAberto] = useState<boolean>(false);
-   const [sonhos, setSonho] = useState<Sonho[]>([])
+   const [sonhos, setSonho] = useState<Sonho[]>([]);
 
    return (
       <View style={styles.container}>
-         <View style={{flex: 0.5, justifyContent: "center"}}>
-            <Button onPress={()=>setModalAberto(true)}>
+         <View style={{ flex: 0.5, justifyContent: "center" }}>
+            <Button onPress={() => setModalAberto(true)}>
                <Text style={styles.buttonText}>Adicionar Sonho</Text>
             </Button>
          </View>
+         {sonhos.length !== 0 ? (
+            <Text>Existirão sonhos aqui</Text>
+         ) : (
+            <View style={[styles.sonhoContainer]}>
+               <Image source={SleepingCat} style={{ tintColor: "white" }} />
+               <Text style={styles.textBase}>Ops, parece que não tem nenhum sonho aqui</Text>
+            </View>
+         )}
 
-         <View style={[styles.sonhoContainer, {backgroundColor: "red"}]}>
-            <Image source={SleepingCat} style={{ tintColor: "white" }} />
-            <Text style={styles.textBase}>Ops, parece que não tem nenhum sonho aqui</Text>
-         </View>
-
-         {modalAberto && <ModalSonho modal={modalAberto} setModal={setModalAberto} setSonho={setSonho}/>}
+         {modalAberto && <ModalSonho modal={modalAberto} setModal={setModalAberto} setSonho={setSonho} />}
       </View>
    );
 };
