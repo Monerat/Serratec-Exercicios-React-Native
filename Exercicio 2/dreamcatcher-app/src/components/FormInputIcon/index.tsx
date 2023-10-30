@@ -1,30 +1,30 @@
-import { Text, View, TextInput, Image, ImageSourcePropType, StyleProp, ImageStyle } from "react-native";
+import { Text, View, TextInput, Image, ImageSourcePropType, StyleProp, ImageStyle, TextInputProps } from "react-native";
 
 import { Button } from "../Button";
 import { styles } from "./styles";
 
-interface FormInputIconProps {
-   label: string;
-   placeholder?: string;
-   value: string;
-   setValue: React.Dispatch<React.SetStateAction<string>>;
-   iconButton?: ImageSourcePropType;
+interface FormInputIconProps extends TextInputProps {
+   label: string
+   iconButton: ImageSourcePropType;
    iconStyle?: StyleProp<ImageStyle>;
-   multiline?: boolean;
+   onIconPress: ()=>void
 }
-
-export const FormInputIcon = ({ label, placeholder, iconButton, iconStyle, value, setValue }: FormInputIconProps) => {
+/**
+ * @param label o título(label) para o input 
+ * @param iconButton o ícone do tipo ImageSourcePropType
+ * @param iconStyle style a ser passado diretamente para o ícone
+ * @returns 
+ */
+export const FormInputIcon = ({ label, iconButton, iconStyle, onIconPress, ...props }: FormInputIconProps) => {
    return (
       <View style={styles.formInputHorizontal}>
-         <Text style={styles.inputLabel}>Data:</Text>
+         <Text style={styles.inputLabel}>{label}</Text>
          <TextInput
-            value={value}
-            onChangeText={setValue}
             style={styles.textInput}
-            placeholder={placeholder}
             placeholderTextColor="#D9D9D980"
+            {...props}
          />
-         <Button icon>
+         <Button icon onPress={onIconPress}>
             <Image
                source={iconButton}
                resizeMode="contain"
