@@ -35,12 +35,12 @@
     <ul>
       <li><a href="#content">Conteúdo</a></li>
       <ul>
-        <li><a href="#exercicio1">Exercicio 1</a></li>
-        <li><a href="#exercicio2">Exercicio 2</a></li>
-        <li><a href="#exercicio3">Exercicio 3</a></li>
-        <li><a href="#exercicio4">Exercicio 4</a></li>
-        <li><a href="#exercicio5">Exercicio 5</a></li>
-        <li><a href="#exercicio6">Exercicio 6</a></li>
+        <li><a href="#exercicio-1">Exercicio 1</a></li>
+        <li><a href="#exercicio-2">Exercicio 2</a></li>
+        <li><a href="#exercicio-3">Exercicio 3</a></li>
+        <li><a href="#exercicio-4">Exercicio 4</a></li>
+        <li><a href="#exercicio-5">Exercicio 5</a></li>
+        <li><a href="#exercicio-6">Exercicio 6</a></li>
       </ul>
     </ul>
     <li><a href="#contato">Contato</a></li>
