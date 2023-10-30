@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { ImageBackground } from "react-native";
+import { ImageBackground, View } from "react-native";
 
 import { Home } from "./src/screens/Home";
 
@@ -11,8 +11,9 @@ export default function App() {
    return (
       <ImageBackground source={BgImage} style={styles.bgImage} imageStyle={{ position: "absolute", left: 0 }}>
          <StatusBar style="light" />
-
-         <Home />
+         <View style={styles.container}>
+            <Home />
+         </View>
       </ImageBackground>
    );
 }

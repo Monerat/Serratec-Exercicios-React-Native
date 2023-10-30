@@ -5,6 +5,17 @@ export const styles = StyleSheet.create({
       position: "relative",
       flex: 1,
    },
+   container:{
+      flex:1,
+      paddingTop: StatusBar.currentHeight,
+      paddingBottom: 48,
+   },
+   buttonText: {
+      color: "white",
+      fontSize: 14,
+      fontWeight: "bold",
+      textTransform: "uppercase",
+    },
    textBase: {
       textAlign: "center",
 
