@@ -1,6 +1,6 @@
 import { Text, View, TextInput, Image, ImageSourcePropType, StyleProp, ImageStyle } from "react-native";
 
-import { Button } from "../Button";
+import { Button } from "../../Button";
 import { styles } from "./styles";
 
 interface FormInputProps {
