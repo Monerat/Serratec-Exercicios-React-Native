@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal, ModalProps, ScrollView, View, Text, TouchableOpacity } from "react-native";
 
-import { Sonho, TagProps } from "../../../screens/Home";
+import { Sonho, TagDataProps } from "../../../screens/Home";
 import { Button } from "../../Button";
 import { FormInputIcon } from "../../Inputs/FormInputIcon";
 import { FormMultilineInput } from "../../Inputs/FormMultilineInput";
@@ -10,6 +10,7 @@ import { FormSinglelineInput } from "../../Inputs/FormSinglelineInput";
 import { styles } from "./styles";
 import PencilIcon from "../../../assets/PencilIcon.png";
 import PupilCatIcon from "../../../assets/pupil-cat.png";
+import { Badge } from "../../Badges/Badge";
 
 interface modalProps extends ModalProps {
    modal: boolean;
@@ -22,8 +23,9 @@ export const ModalSonho = ({ modal, setModal, salvar, ...props }: modalProps) =>
    const [data, setData] = useState<string | null>(new Date().toLocaleDateString());
    const [dataEditable, setDataEditable] = useState<boolean>(false);
    const [descricao, setDescricao] = useState<string>("");
-   const [tags, setTags] = useState<TagProps[]>([]);
+   const [tags, setTags] = useState<TagDataProps[]>([]);
    const [newTag, setNewTag] = useState<string>("");
+   const badgeTouchable = true;
 
    const handlePress = () => {
       salvar({ title, data, descricao, tags });
@@ -31,7 +33,7 @@ export const ModalSonho = ({ modal, setModal, salvar, ...props }: modalProps) =>
    };
 
    const handleTags = () => {
-      if (newTag != "" && tags.length < 4) {
+      if (newTag != "" && tags.length < 3) {
          const id = "T" + Math.floor(Math.random() * 1000);
          const novaTag = { id: id, name: newTag };
 
@@ -97,19 +99,7 @@ export const ModalSonho = ({ modal, setModal, salvar, ...props }: modalProps) =>
                         {tags.length > 0 &&
                            tags.map(tag => {
                               return (
-                                 <TouchableOpacity
-                                    key={tag.id}
-                                    activeOpacity={0.8}
-                                    onPress={() => removeTag(tag.id)}
-                                    style={{
-                                       alignItems: "center",
-                                       paddingHorizontal: "5%",
-                                       paddingVertical: 3,
-                                       backgroundColor: "#5C5FB2",
-                                       borderRadius: 30,
-                                    }}>
-                                    <Text style={{ color: "white", fontSize: 12 }}>{tag.name}</Text>
-                                 </TouchableOpacity>
+                                 <Badge<{touchable: typeof badgeTouchable}> key={tag.id} tag={tag} touchable={badgeTouchable} onPress={()=>removeTag(tag.id)} />
                               );
                            })}
                      </View>

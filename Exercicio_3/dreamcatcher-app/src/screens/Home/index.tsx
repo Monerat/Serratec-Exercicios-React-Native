@@ -14,10 +14,10 @@ export interface Sonho {
    title: string;
    data: string;
    descricao: string;
-   tags: TagProps[];
+   tags: TagDataProps[];
 }
 
-export interface TagProps {
+export interface TagDataProps {
    id: string
    name: string
 }
