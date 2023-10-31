@@ -23,7 +23,7 @@ export const ModalSonho = ({ modal, setModal, salvar, ...props }: modalProps) =>
    const [dataEditable, setDataEditable] = useState<boolean>(false);
    const [descricao, setDescricao] = useState<string>("");
    const [tags, setTags] = useState<TagProps[]>([]);
-   const [newTag, setNewTags] = useState<string>("");
+   const [newTag, setNewTag] = useState<string>("");
 
    const handlePress = () => {
       salvar({ title, data, descricao, tags });
@@ -36,7 +36,9 @@ export const ModalSonho = ({ modal, setModal, salvar, ...props }: modalProps) =>
          const novaTag = { id: id, name: newTag };
 
          setTags([...tags, novaTag]);
-      }
+      };
+
+      setNewTag("");
    };
 
    const removeTag = (id: string) => {
@@ -84,7 +86,7 @@ export const ModalSonho = ({ modal, setModal, salvar, ...props }: modalProps) =>
                         label="Tag:"
                         placeholder="Digite uma Tag"
                         value={newTag}
-                        onChangeText={setNewTags}
+                        onChangeText={setNewTag}
                         editable
                         iconButton={PupilCatIcon}
                         iconStyle={{ height: 36, width: 36 }}
