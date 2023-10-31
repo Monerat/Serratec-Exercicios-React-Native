@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     badge:{
         alignItems: "center",
         paddingHorizontal: "5%",
-        paddingVertical: 3,
+        paddingVertical: 5,
 
         backgroundColor: "#0C1C5B",
         borderWidth: 1,

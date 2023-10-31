@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
    container:{
       flex:1,
       paddingTop: StatusBar.currentHeight,
-      paddingBottom: 48,
+      paddingBottom: 18,
    },
    buttonText: {
       color: "white",

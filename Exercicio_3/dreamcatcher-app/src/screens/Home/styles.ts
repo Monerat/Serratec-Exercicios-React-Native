@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "space-around",
-      gap: 28,
+      gap: 18
    },
    sonhoContainer: {
       flex: 1,

@@ -8,6 +8,7 @@ import { styles } from "./styles";
 import { useState } from "react";
 import { ModalSonho } from "../../components/Modais/ModalSonhos";
 import { CardSonho } from "../../components/CardSonho";
+import { sonhosContent } from "../../../mockupContent/SonhoContent";
 
 export interface Sonho {
    id?: string;
@@ -18,8 +19,8 @@ export interface Sonho {
 }
 
 export interface TagDataProps {
-   id: string
-   name: string
+   id: string;
+   name: string;
 }
 
 export const Home = () => {
@@ -28,17 +29,23 @@ export const Home = () => {
 
    function criarSonhoCard(sonho: Sonho) {
       const id = "S" + Math.floor(Math.random() * 1000);
-      sonhosArray.unshift({ ...sonho, id: id});
+      sonhosArray.unshift({ ...sonho, id: id });
    }
 
    return (
       <View style={styles.container}>
-         <View style={{ flex: 0.5, alignItems: "center", justifyContent: "center" }}>
-            <Button value="Adicionar Sonho" styleAdjustments={{maxWidth: "50%", maxHeight: "50%"}} onPress={() => setModalAberto(true)} />
+         <View style={{ flex: 0.2, justifyContent: "flex-end" }}>
+            <Button
+               value="Adicionar Sonho"
+               styleAdjustments={{ maxWidth: "50%", maxHeight: "50%" }}
+               onPress={() => setModalAberto(true)}
+            />
          </View>
          {sonhosArray.length !== 0 ? (
             <FlatList
                data={sonhosArray}
+               showsVerticalScrollIndicator={false}
+               style={{ width: "85%", flex:1 }}
                keyExtractor={data => data.id}
                renderItem={({ item, index }) => <CardSonho sonho={item} />}
             />
