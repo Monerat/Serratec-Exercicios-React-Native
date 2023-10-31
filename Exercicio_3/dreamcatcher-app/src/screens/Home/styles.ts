@@ -22,10 +22,4 @@ export const styles = StyleSheet.create({
       fontWeight: "400",
       color: "white",
    },
-   buttonText: {
-      color: "white",
-      fontSize: 14,
-      fontWeight: "bold",
-      textTransform: "uppercase",
-   },
 });

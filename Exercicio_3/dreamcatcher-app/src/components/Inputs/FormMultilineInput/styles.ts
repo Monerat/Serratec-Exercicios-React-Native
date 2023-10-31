@@ -2,17 +2,11 @@ import { StyleSheet } from "react-native"
 
 export const styles = StyleSheet.create({
     formInputContainer: {
-        width: "100%",
-  
-        gap: 4,
-     },
-     formInputHorizontal: {
-        width: "100%",
-  
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: 8,
+      flex: 4,
+
+      flexDirection: "column",
+      alignItems: "stretch",
+      gap: 8,
      },
   
      inputLabel: {
@@ -28,24 +22,9 @@ export const styles = StyleSheet.create({
         fontWeight: "400",
         color: "white",
      },
-     textInput: {
-        minHeight: 32,
-  
-        flex: 1,
-        paddingHorizontal: 14,
-        paddingVertical: 7,
-  
-        color: "white",
-  
-        borderRadius: 21,
-        borderBottomWidth: 3.5,
-        borderBottomColor: "#5C5FB2",
-        backgroundColor: "#0000001A",
-  
-        fontSize: 18,
-     },
      textMultilineInput: {
-        height: 114,
+        minHeight: 114,
+        flex: 1,
   
         paddingHorizontal: 14,
         paddingVertical: 7,

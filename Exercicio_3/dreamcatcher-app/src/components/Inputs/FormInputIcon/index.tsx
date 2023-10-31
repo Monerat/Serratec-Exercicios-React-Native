@@ -1,4 +1,6 @@
-import { Text, View, TextInput, Image, ImageSourcePropType, StyleProp, ImageStyle, TextInputProps } from "react-native";
+import { Text, View, TextInput, ImageSourcePropType, StyleProp, ImageStyle, TextInputProps } from "react-native";
+
+
 
 import { Button } from "../../Button";
 import { styles } from "./styles";
@@ -16,21 +18,16 @@ interface FormInputIconProps extends TextInputProps {
  * @returns 
  */
 export const FormInputIcon = ({ label, iconButton, iconStyle, onIconPress, ...props }: FormInputIconProps) => {
+
    return (
       <View style={styles.formInputHorizontal}>
          <Text style={styles.inputLabel}>{label}</Text>
          <TextInput
-            style={styles.textInput}
+            style={props.editable ? styles.textInput : styles.inputDisabled}
             placeholderTextColor="#D9D9D980"
             {...props}
          />
-         <Button icon onPress={onIconPress}>
-            <Image
-               source={iconButton}
-               resizeMode="contain"
-               style={iconStyle}
-            />
-         </Button>
+         <Button value={iconButton} iconStyle={iconStyle} onPress={onIconPress} />
       </View>
    );
 };
