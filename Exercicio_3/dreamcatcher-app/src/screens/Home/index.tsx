@@ -55,7 +55,7 @@ export const Home = () => {
                <Text style={styles.textBase}>Ops, parece que não tem nenhum sonho aqui</Text>
             </View>
          )}
-         {modalAberto && <ModalSonho modal={modalAberto} setModal={setModalAberto} salvar={criarSonhoCard} />}
+         {modalAberto && <ModalSonho modal={modalAberto} setModal={setModalAberto} salvar={criarSonhoCard} acao="criar" />}
       </View>
    );
 };

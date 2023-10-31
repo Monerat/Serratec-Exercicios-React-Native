@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, ModalProps, ScrollView, View, Text, TouchableOpacity } from "react-native";
 
 import { Sonho, TagDataProps } from "../../../screens/Home";
@@ -16,19 +16,26 @@ interface modalProps extends ModalProps {
    modal: boolean;
    setModal: React.Dispatch<React.SetStateAction<boolean>>;
    salvar: (sonho: Sonho) => void;
+   sonhoEdit?: Sonho;
+   acao: "criar" | "editar";
 }
 
-export const ModalSonho = ({ modal, setModal, salvar, ...props }: modalProps) => {
-   const [title, setTile] = useState<string>("");
-   const [data, setData] = useState<string | null>(new Date().toLocaleDateString());
+export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props }: modalProps) => {
+   const [id, setId] = useState<string>("")
+   const [title, setTitle] = useState<string>("");
+   const [data, setData] = useState<string>(new Date().toLocaleDateString());
    const [dataEditable, setDataEditable] = useState<boolean>(false);
    const [descricao, setDescricao] = useState<string>("");
    const [tags, setTags] = useState<TagDataProps[]>([]);
    const [newTag, setNewTag] = useState<string>("");
    const badgeTouchable = true;
 
+   useEffect(()=>{
+      acao ==="editar" && settSonhoEdit()
+   },[])
+
    const handlePress = () => {
-      salvar({ title, data, descricao, tags });
+      salvar({ title, data, descricao, tags })
       setModal(!modal);
    };
 
@@ -49,6 +56,14 @@ export const ModalSonho = ({ modal, setModal, salvar, ...props }: modalProps) =>
       setTags(novoArray);
    };
 
+   const settSonhoEdit = () =>{
+      setId(sonhoEdit.id);
+      setTitle(sonhoEdit.title);
+      setData(sonhoEdit.data);
+      setDescricao(sonhoEdit.descricao);
+      setTags(sonhoEdit.tags);
+   };
+
    return (
       <Modal
          animationType="slide"
@@ -65,7 +80,7 @@ export const ModalSonho = ({ modal, setModal, salvar, ...props }: modalProps) =>
                      label="Adicione um sonho"
                      placeholder="Digite um título"
                      value={title}
-                     setValue={setTile}
+                     setValue={setTitle}
                   />
                   <FormInputIcon
                      label="Data:"
