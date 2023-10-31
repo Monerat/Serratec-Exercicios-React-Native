@@ -1,4 +1,4 @@
-import { Text, View, ViewProps, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { Text, View, ViewProps, TouchableOpacity, TouchableOpacityProps, StyleSheet, StyleProp, ViewStyle } from "react-native";
 
 import { TagDataProps } from "../../../screens/Home";
 import { styles } from "./styles";
@@ -14,6 +14,9 @@ interface BadgeViewProps extends ViewProps {
     touchable?: boolean
 }
 
+const flattenStyles = (style: StyleProp<any>) => {
+   console.log(StyleSheet.flatten([styles.badge, style]));
+}
 
 export const Badge = <T extends {touchable: boolean} | undefined> ({tag, touchable, ...props}: TouchableOrView<T>) => {
    return touchable ? (

@@ -27,7 +27,6 @@ export const Home = () => {
    const [sonhosArray, setSonhosArray] = useState<Sonho[]>([]);
 
    function criarSonhoCard(sonho: Sonho) {
-      console.log(sonho);
       const id = "S" + Math.floor(Math.random() * 1000);
       sonhosArray.unshift({ ...sonho, id: id});
    }
