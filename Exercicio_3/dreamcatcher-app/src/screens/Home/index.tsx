@@ -46,7 +46,7 @@ export const Home = () => {
                data={sonhosArray}
                showsVerticalScrollIndicator={false}
                style={{ width: "85%", flex:1 }}
-               keyExtractor={data => data.id}
+               keyExtractor={data => data.id!}
                renderItem={({ item, index }) => <CardSonho sonho={item} />}
             />
          ) : (
