@@ -8,7 +8,6 @@ import { styles } from "./styles";
 import { useState } from "react";
 import { ModalSonho } from "../../components/Modais/ModalSonhos";
 import { CardSonho } from "../../components/CardSonho";
-import { sonhosContent } from "../../../mockupContent/SonhoContent";
 
 export interface Sonho {
    id?: string;
@@ -45,7 +44,7 @@ export const Home = () => {
             <FlatList
                data={sonhosArray}
                showsVerticalScrollIndicator={false}
-               style={{ width: "85%", flex:1 }}
+               style={{ width: "85%" }}
                keyExtractor={data => data.id!}
                renderItem={({ item, index }) => <CardSonho sonho={item} />}
             />
