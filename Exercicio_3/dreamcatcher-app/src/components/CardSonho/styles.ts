@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
       width: "100%",
       marginVertical: 20,
 
-      display: "flex",
       flex: 1,
       flexDirection: "column",
       padding: "5%",
@@ -44,8 +43,6 @@ export const styles = StyleSheet.create({
       lineHeight: 14,
    },
    tagsContainer: {
-      flex: 1,
-      flexDirection: "row",
-      gap: 18,
+      width: "100%", flex: 1, flexDirection: "row", flexWrap: "wrap", gap: 18
    },
 });
