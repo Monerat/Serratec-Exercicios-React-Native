@@ -1,21 +1,23 @@
 import { StatusBar, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-   bgImage:{
-      position: "relative",
+   container: {
       flex: 1,
-   },
-   container:{
-      flex:1,
+      flexDirection: "column",
+      alignItems: "center",
       paddingTop: StatusBar.currentHeight,
-      paddingBottom: 18,
+
+      gap: 18
    },
-   buttonText: {
-      color: "white",
-      fontSize: 14,
-      fontWeight: "bold",
-      textTransform: "uppercase",
-    },
+   sonhoContainer: {
+      flex: 1,
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      paddingBottom: 40,
+      gap: 18
+
+   },
    textBase: {
       textAlign: "center",
 

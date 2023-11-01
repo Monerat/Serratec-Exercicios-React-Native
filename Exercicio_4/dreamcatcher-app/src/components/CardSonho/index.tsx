@@ -1,19 +1,28 @@
 import { View, Text, TouchableOpacity } from "react-native";
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from "@react-navigation/native"
 
 import { Sonho } from "../../screens/Home";
+import { Badge } from "../Badges/Badge";
+import { RootStackParamList } from "../../routes/StackNavigation";
 
 import { styles } from "./styles";
-import { Badge } from "../Badges/Badge";
 
+type CardSonhoNavigationProp = StackNavigationProp<RootStackParamList, 'SonhosStack' >;
 interface CardSonhoProps {
    sonho: Sonho;
 }
 
-export const CardSonho = ({ sonho }: CardSonhoProps) => {
+export const CardSonho = ({ sonho, }: CardSonhoProps) => {
+   const nav = useNavigation<CardSonhoNavigationProp>()
    const { id, title, data, descricao, tags } = sonho;
 
+   const handleNavigation = () => {
+      nav.navigate('Detalhes',{ id })
+   }
+
    return (
-      <TouchableOpacity activeOpacity={0.8} style={styles.card}>
+      <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={handleNavigation}>
             <Text style={styles.cardTitulo}>{title.length > 38 ? title.substring(0,37).concat("...") : title}</Text>
             <View style={styles.dividerContainer}>
                <View style={styles.divider} />
