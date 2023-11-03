@@ -14,8 +14,6 @@ export const styles = StyleSheet.create({
       backgroundColor: "#5C5FB2",
    },
    cardTitulo: {
-      marginBottom: -6,
-
       color: "white",
       fontSize: 18,
       fontWeight: "700",
