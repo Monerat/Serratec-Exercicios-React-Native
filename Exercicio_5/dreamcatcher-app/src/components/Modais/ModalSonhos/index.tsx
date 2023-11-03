@@ -26,6 +26,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
    const [data, setData] = useState<string>(new Date().toLocaleDateString());
    const [dataEditable, setDataEditable] = useState<boolean>(false);
    const [descricao, setDescricao] = useState<string>("");
+   const [favorite, setFavorite] = useState<boolean>(false);
    const [tags, setTags] = useState<TagDataProps[]>([]);
    const [newTag, setNewTag] = useState<string>("");
    const badgeTouchable = true;
@@ -35,7 +36,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
    },[])
 
    const handlePress = () => {
-      salvar({ id,title, data, descricao, tags })
+      salvar({ id,title, data, descricao, favorite, tags })
       setModal(!modal);
    };
 
@@ -61,6 +62,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
       setTitle(sonhoEdit.title);
       setData(sonhoEdit.data);
       setDescricao(sonhoEdit.descricao);
+      setFavorite(sonhoEdit.favorite);
       setTags(sonhoEdit.tags);
    };
 
@@ -129,8 +131,8 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
                         gap: 16,
                         marginTop: 28,
                      }}>
-                     <Button value="Cancelar" buttonStyle="secondary" onPress={() => setModal(!modal)} />
-                     <Button value="Salvar" onPress={handlePress} />
+                     <Button text="Cancelar" buttonStyle="secondary" onPress={() => setModal(!modal)} />
+                     <Button text="Salvar" onPress={handlePress} />
                   </View>
                </ScrollView>
             </View>
