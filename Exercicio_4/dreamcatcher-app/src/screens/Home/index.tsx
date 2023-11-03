@@ -16,7 +16,8 @@ export interface Sonho {
    title: string;
    data: string;
    descricao: string;
-   tags: TagDataProps[];
+   favorite: boolean;
+   tags?: TagDataProps[];
 }
 
 export interface TagDataProps {
@@ -30,8 +31,8 @@ export const Home = () => {
 
    function criarSonhoCard(sonho: Sonho) {
       const id = "S" + Math.floor(Math.random() * 1000);
-      sonhosArray.unshift({ ...sonho, id: id });
-   }
+      sonhosArray.unshift({ ...sonho, id: id, favorite: false });
+   };
 
    return (
       <ImageBackground
@@ -39,6 +40,7 @@ export const Home = () => {
          style={{ flex: 1, position: "relative" }}
          imageStyle={{ position: "absolute", left: 0 }}>
          <View style={styles.container}>
+            
             <View style={{ flex: 0.2, justifyContent: "flex-end"}}>
                <Button
                   value="Adicionar Sonho"

@@ -9,16 +9,15 @@ interface ButtonProps extends TouchableOpacityProps {
    styleAdjustments?: {}
 }
 /**
+ * @returns Componente Botão já estilizado,
  * @param value string | ImageSourcePropType
  * @param buttonStyle "primary" | "secondary" | "text"
- * @param styleAdjustments {}
+ * @param styleAdjustments StyleProp<ViewStyle>
  * @example <Button value="Salvar" styleAdjustments={{alignItems: "flex-end"}} />
  * <Button value={PencilIcon} />
  * @default buttonStyle "primary"
- * @returns Componente Botão já estilizado,
  */
 export const Button = ({ value, buttonStyle = "primary", iconStyle, styleAdjustments, ...props }: ButtonProps) => {
-   const buttonDefaultStyle = props.style as ViewStyle
 
    if (typeof value === "string") {
       if (buttonStyle === "primary") {
@@ -30,15 +29,15 @@ export const Button = ({ value, buttonStyle = "primary", iconStyle, styleAdjustm
 
       } else if (buttonStyle === "secondary") {
          return (
-            <TouchableOpacity style={styles.buttonSecondary} {...props}>
+            <TouchableOpacity style={[styles.buttonSecondary, {...styleAdjustments}]} {...props}>
                <Text style={styles.buttonTextSecondary}> {value} </Text>
             </TouchableOpacity>
          );
 
       } else {
          return (
-            <TouchableOpacity style={styles.buttonVariant} {...props}>
-               <Text style={styles.buttonTextSecondary}> {value} </Text>
+            <TouchableOpacity style={[styles.buttonVariant, {...styleAdjustments}]} {...props}>
+               <Text style={[styles.buttonTextSecondary, {fontSize: 16, textDecorationLine: "underline"}]}> {value} </Text>
             </TouchableOpacity>
          );
       };

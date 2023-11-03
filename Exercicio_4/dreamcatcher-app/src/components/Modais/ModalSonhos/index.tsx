@@ -35,7 +35,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
    },[])
 
    const handlePress = () => {
-      salvar({ title, data, descricao, tags })
+      salvar({ id,title, data, descricao, tags })
       setModal(!modal);
    };
 
