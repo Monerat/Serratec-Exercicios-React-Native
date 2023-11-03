@@ -27,7 +27,7 @@ export const FormInputIcon = ({ label, iconButton, iconStyle, onIconPress, ...pr
             placeholderTextColor="#D9D9D980"
             {...props}
          />
-         <Button value={iconButton} iconStyle={iconStyle} onPress={onIconPress} />
+         <Button image={iconButton} iconStyle={iconStyle} onPress={onIconPress} />
       </View>
    );
 };

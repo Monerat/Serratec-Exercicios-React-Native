@@ -43,7 +43,7 @@ export const Home = () => {
             
             <View style={{ flex: 0.2, justifyContent: "flex-end"}}>
                <Button
-                  value="Adicionar Sonho"
+                  text="Adicionar Sonho"
                   styleAdjustments={{ maxWidth: "50%", maxHeight: "50%", minHeight: 50 }}
                   onPress={() => setModalAberto(true)}
                />

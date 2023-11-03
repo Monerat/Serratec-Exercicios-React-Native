@@ -67,13 +67,13 @@ export const SonhoDetails = ({ route }: SonhoDetailsProps) => {
                   gap: 14,
                }}>
                <Button
-                  value="Voltar"
+                  text="Voltar"
                   buttonStyle="text"
                   styleAdjustments={{ maxWidth: "50%", minHeight: 50 }}
                   onPress={() => {console.log(JSON.stringify(nav.getState()) ); nav.goBack() }}
                />
                <Button
-                  value="Editar"
+                  text="Editar"
                   styleAdjustments={{ maxWidth: "50%", minHeight: 50 }}
                   onPress={() => setModalAberto(true)}
                />

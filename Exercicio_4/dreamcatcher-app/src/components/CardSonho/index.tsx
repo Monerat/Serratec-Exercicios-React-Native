@@ -9,6 +9,7 @@ import { Badge } from "../Badges/Badge";
 import { RootStackParamList } from "../../routes/StackNavigation";
 
 import { styles } from "./styles";
+import { Button } from "../Button";
 
 type CardSonhoNavigationProp = StackNavigationProp<RootStackParamList, "SonhosStack">;
 interface CardSonhoProps {
@@ -24,18 +25,15 @@ export const CardSonho = ({ sonho }: CardSonhoProps) => {
    };
 
    const toggleFavorite = () => {
-      sonho = { ...sonho, favorite: !favorite };
       console.log("Favorite clicado", sonho.favorite);
    };
 
    return (
-      <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={handleNavigation}>
+      <TouchableOpacity activeOpacity={0.8} style={styles.card} onLongPress={handleNavigation}>
          <View style={{marginBottom: -6, width: "100%", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
             <Text style={styles.cardTitulo}>{title.length > 30 ? title.substring(0, 29).concat("...") : title}</Text>
 
-            <TouchableOpacity activeOpacity={0.7} onPress={toggleFavorite}>
-               <Image source={favorite ? StarOn : StarOff} resizeMode="contain" />
-            </TouchableOpacity>
+            <Button image={favorite ? StarOn : StarOff} style={{borderWidth: 0}} onPress={toggleFavorite} />
          </View>
          <View style={styles.dividerContainer}>
             <View style={styles.divider} />

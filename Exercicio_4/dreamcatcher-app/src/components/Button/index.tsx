@@ -1,51 +1,62 @@
-import { Text, TouchableOpacity, TouchableOpacityProps, Image, ImageSourcePropType, ViewStyle, StyleProp, ImageStyle } from "react-native";
+import {
+   Text,
+   TouchableOpacity,
+   TouchableOpacityProps,
+   Image,
+   ImageSourcePropType,
+   ViewStyle,
+   StyleProp,
+   ImageStyle,
+} from "react-native";
 
 import { styles } from "./styles";
 
 interface ButtonProps extends TouchableOpacityProps {
-   value: string | ImageSourcePropType;
+   text?: string;
+   image?: ImageSourcePropType;
    buttonStyle?: "primary" | "secondary" | "text";
    iconStyle?: StyleProp<ImageStyle>;
-   styleAdjustments?: {}
+   iconBackground?: boolean;
+   styleAdjustments?: {};
 }
+
 /**
  * @returns Componente Botão já estilizado,
- * @param value string | ImageSourcePropType
+ * @param text string
+ * @param image ImageSourcePropType
  * @param buttonStyle "primary" | "secondary" | "text"
  * @param styleAdjustments StyleProp<ViewStyle>
- * @example <Button value="Salvar" styleAdjustments={{alignItems: "flex-end"}} />
- * <Button value={PencilIcon} />
+ * @example <Button text="Salvar" styleAdjustments={{alignItems: "flex-end"}} />
+ * <Button image={PencilIcon} />
  * @default buttonStyle "primary"
  */
-export const Button = ({ value, buttonStyle = "primary", iconStyle, styleAdjustments, ...props }: ButtonProps) => {
 
-   if (typeof value === "string") {
-      if (buttonStyle === "primary") {
-         return (
-            <TouchableOpacity style={[styles.button, {...styleAdjustments}]} {...props}>
-               <Text style={styles.buttonText}> {value} </Text>
-            </TouchableOpacity>
-         );
+export const Button = ({
+   text,
+   image,
+   buttonStyle = "primary",
+   iconStyle,
+   iconBackground,
+   styleAdjustments,
+   ...props
+}: ButtonProps) => {
 
+   const selecionaButtonStyle = () =>{
+      if(buttonStyle === "primary"){
+         return styles.button
       } else if (buttonStyle === "secondary") {
-         return (
-            <TouchableOpacity style={[styles.buttonSecondary, {...styleAdjustments}]} {...props}>
-               <Text style={styles.buttonTextSecondary}> {value} </Text>
-            </TouchableOpacity>
-         );
-
+         return styles.buttonSecondary
+      } else if (buttonStyle === "text") {
+         return styles.buttonVariant
       } else {
-         return (
-            <TouchableOpacity style={[styles.buttonVariant, {...styleAdjustments}]} {...props}>
-               <Text style={[styles.buttonTextSecondary, {fontSize: 16, textDecorationLine: "underline"}]}> {value} </Text>
-            </TouchableOpacity>
-         );
+         return styles.buttonIcon
       };
-   } else {
-      return (
-         <TouchableOpacity style={styles.buttonIcon} {...props}>
-            <Image source={value} width={16} height={16} resizeMode="contain" style={iconStyle} />
-         </TouchableOpacity>
-      );
-   }
+   };
+
+   return (
+      <TouchableOpacity style={[selecionaButtonStyle(), { ...styleAdjustments }]} {...props}>
+         {text && <Text style={buttonStyle === "primary" ? styles.buttonText : styles.buttonTextSecondary}> {text} </Text>}
+         {image && <Image source={image} width={16} height={16} resizeMode="contain" style={iconStyle} />}
+      </TouchableOpacity>
+   );
 };
