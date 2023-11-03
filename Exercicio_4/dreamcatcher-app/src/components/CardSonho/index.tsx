@@ -18,7 +18,7 @@ export const CardSonho = ({ sonho, }: CardSonhoProps) => {
    const { id, title, data, descricao, tags } = sonho;
 
    const handleNavigation = () => {
-      nav.navigate('Detalhes',{ id })
+      nav.navigate('Detalhes', {sonhoSelecionado: sonho})
    }
 
    return (
