@@ -4,14 +4,14 @@ const moonPhaseAPI = axios.create({
     baseURL: "https://www.icalendar37.net/lunar/api"
 });
     
-export interface apiConfig {
+export interface ApiConfig {
     lang  		: 'pt' | "en" |  "es" |  "fr" |  "zh" |  "ru" |  "ca" |  "it" |  "pt" |  "de" |  "pl"; 
     month 		: number; // 1  - 12
     year  		: number; // year
     size		: 100; //  "100%" - pixels
     lightColor	: string; //CSS color
     shadeColor	: string; // CSS color    
-    texturize	: string; // true - false
+    texturize	: boolean; // true - false
 };
 
 export interface MoonPhaseResponse {
@@ -37,10 +37,10 @@ export interface Phase {
     isPhaseLimit: boolean | number;
     lighting:     number;
     svg:          string;
-    svgMini:      boolean | string;
+    svgMini:      string;
     timeEvent:    boolean | string;
     dis:          number;
-    dayWeek:      number;
+    dayWeek:      number; //zero-based array começando na Segunda-feira
     npWidget:     string;
 };
 
@@ -55,8 +55,14 @@ export interface ReceivedVariables {
     LDZ:        string;
 };
 
-export const getMoonPhase = (params: apiConfig): Promise<AxiosResponse<MoonPhaseResponse>> => {
+export const getMoonPhase = (params: ApiConfig): Promise<AxiosResponse<MoonPhaseResponse>> => {
+    const day = new Date().getDate()
+    const fullDate = new Date(params.year, params.month+1, day)
+    // const ldz = (fullDate/1000)
+    const ldz = (Date.now()/1000)
+
+    const paramsRequest = {...params, LDZ: ldz}
     
-   return moonPhaseAPI.get("/", {params: params})
+   return moonPhaseAPI.get("/", {params: paramsRequest})
 };
 

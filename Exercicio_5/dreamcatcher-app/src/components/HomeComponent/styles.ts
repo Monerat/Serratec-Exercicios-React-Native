@@ -5,9 +5,14 @@ export const styles = StyleSheet.create({
       flex: 1,
       flexDirection: "column",
       alignItems: "center",
-      paddingTop: StatusBar.currentHeight,
+      paddingTop: StatusBar.currentHeight * 2,
 
-      gap: 18
+      gap: 18,
+   },
+   headerText: {
+      color: "white",
+      fontSize: 24,
+      textTransform: "capitalize",
    },
    sonhoContainer: {
       flex: 1,
