@@ -41,12 +41,12 @@ export const styles = StyleSheet.create({
       lineHeight: 14,
    },
    tagsContainer: {
-      width: "100%",
+      // width: "100%",
       flex: 1,
       flexDirection: "row",
-      justifyContent: "space-between",
+      justifyContent: "flex-start",
       alignItems: "center",
       flexWrap: "wrap",
-      gap: 18,
+      gap: 12,
    },
 });
