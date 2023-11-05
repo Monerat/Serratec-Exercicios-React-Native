@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Sonho } from "../../components/HomeComponent";
 import { sonhosContent } from "../../../mockupContent/SonhoContent";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface ConxtextProps {
    children: React.ReactNode;
@@ -21,16 +22,45 @@ export const FavoritesContext = createContext<IFavoritesContext>({
 });
 
 export const FavoritesProvider = ({ children }: ConxtextProps) => {
-   const [sonhosArray, setSonhosArray] = useState<Sonho[]>(sonhosContent);
+   const [sonhosArray, setSonhosArray] = useState<Sonho[]>([]);
 
-   const getSonhoArray = (): Sonho[] => {
-      return sonhosArray;
+   useEffect(() => {
+      getSonhoArray()
+         .then(res => {
+            const sortedArray = sortSonhosByDate(res) ?? []            
+            setSonhosArray(sortedArray);
+         })
+         .catch(err => {
+            console.log(err);
+         });
+   }, []);
+
+   const getSonhoArray = async (): Promise<Sonho[]> => {
+      try {
+         const jsonValue = await AsyncStorage.getItem("@Dreamcatcher_sonhos");
+         return JSON.parse(jsonValue)
+      } catch (err) {
+         return err;
+      }
    };
 
-   const addSonho = (sonho: Sonho) => {
-      setSonhosArray([sonho, ...sonhosArray]);
+   const storeSonhoArray = async (value: Sonho[]) => {
+      try {
+         const jsonValue = JSON.stringify(value)
+         await AsyncStorage.setItem("@Dreamcatcher_sonhos", jsonValue)
+     } catch (err) {
+         return err
+     }
+   };
 
-      console.log("Favorito Adicionado");
+   const limparSonhoArray = () => {
+      AsyncStorage.removeItem("@Dreamcatcher_sonhos")
+   }
+
+   const addSonho = (sonho: Sonho) => {
+      
+      setSonhosArray([sonho, ...sonhosArray]);
+      storeSonhoArray([sonho, ...sonhosArray]);
    };
 
    const editSonho = (sonho: Sonho) => {
@@ -49,10 +79,10 @@ export const FavoritesProvider = ({ children }: ConxtextProps) => {
          }
       });
 
-      const sortedArray = sortArrayByDate(updatedSonhosArray)
+      const sortedArray = sortSonhosByDate(updatedSonhosArray)
 
       setSonhosArray(sortedArray);
-      console.log("Favorito Editado");
+      storeSonhoArray(sortedArray);
    };
 
    const atualizaFavoritosArray = (sonhoSelecionado: Sonho) => {
@@ -66,9 +96,10 @@ export const FavoritesProvider = ({ children }: ConxtextProps) => {
          }
       });
 
-      const sortedArray = sortArrayByDate(updatedSonhosArray)
+      const sortedArray = sortSonhosByDate(updatedSonhosArray)
 
       setSonhosArray(sortedArray);
+      storeSonhoArray(sortedArray);
    };
 
     /**
@@ -84,7 +115,9 @@ export const FavoritesProvider = ({ children }: ConxtextProps) => {
       return new Date(dataIntArray[2], dataIntArray[1], dataIntArray[0]);
    };
 
-   const sortArrayByDate = (array: Sonho[]) => {
+   const sortSonhosByDate = (array: Sonho[]) => {
+      if(!array) { return null}
+
      const sortedArray = array.sort((a, b) => {
          const dataA = stringToDateConverter(a.data);
          const dataB = stringToDateConverter(b.data);

@@ -42,7 +42,7 @@ export const HomeComponent = () => {
 
    useEffect(() => {
       getMoonPhaseDiaAtual();
-   });
+   },[]);
 
 
    function getMoonPhaseDiaAtual() {
@@ -66,7 +66,7 @@ export const HomeComponent = () => {
             const diaMes = dataAtual.getDate();
 
             const headerData = {
-               diaSemana: res.data.nameDay[diaSemana - 1],
+               diaSemana: res.data.nameDay[diaSemana === 0 ? 6 : diaSemana - 1],
                diaMes: diaMes,
                mês: res.data.nameMonth[reqData.month],
                ano: res.data.year,
