@@ -24,20 +24,20 @@ export const SonhoDetailsComponent = ({ sonhoSelecionado }: SonhoDetailsProps) =
    const [sonhoEditado, setSonhoEditado] = useState<Sonho | null>(null);
    const [modalAberto, setModalAberto] = useState<boolean>(false);
 
-   const editarSonho = (sonhoEditado: Sonho) => {
-      alert(JSON.stringify(sonhoEditado));
-      setSonhoEditado(sonhoEditado);
-   };
-
    return (
       <View style={styles.container}>
          <View style={styles.header}>
             <Text style={styles.title}>{!sonhoEditado ? sonhoSelecionado.title : sonhoEditado.title}</Text>
             <View style={styles.tagsContainer}>
-               {(!sonhoEditado ? sonhoSelecionado.tags.length > 0 : sonhoEditado.tags.length > 0) &&
-                  sonhoSelecionado.tags.map(tag => {
-                     return <Badge key={tag.id} tag={tag} />;
-                  })}
+               {!sonhoEditado
+                  ? sonhoSelecionado.tags.length > 0
+                     ? sonhoSelecionado.tags.map(tag => {
+                          return <Badge key={tag.id} tag={tag} />;
+                       })
+                     : null
+                  : sonhoEditado.tags.map(tag => {
+                       return <Badge key={tag.id} tag={tag} />;
+                    })}
             </View>
          </View>
          <View style={{ flex: 1, flexDirection: "column", gap: 18 }}>
@@ -69,13 +69,7 @@ export const SonhoDetailsComponent = ({ sonhoSelecionado }: SonhoDetailsProps) =
             />
          </View>
          {modalAberto && (
-            <ModalSonho
-               modal={modalAberto}
-               setModal={setModalAberto}
-               salvar={editarSonho}
-               acao="editar"
-               sonhoEdit={sonhoSelecionado}
-            />
+            <ModalSonho modal={modalAberto} setModal={setModalAberto} acao="editar" sonhoEdit={sonhoSelecionado} setSonhoEdit={setSonhoEditado} />
          )}
       </View>
    );

@@ -44,38 +44,16 @@ export const FavoritesProvider = ({ children }: ConxtextProps) => {
                favorite: sonho.favorite,
                tags: sonho.tags,
             };
+         } else {
+            return sonhoDB
          }
       });
 
       const sortedArray = sortArrayByDate(updatedSonhosArray)
 
       setSonhosArray(sortedArray);
-      console.log("Favorito Editado", updatedSonhosArray);
+      console.log("Favorito Editado");
    };
-
-   /**
-    * @returns objeto Date correspondente a string parametro
-    * @param data Data no formato LocaleString (dd/mm/YYYY)
-    *
-    * @example stringToDateConverter("12/12/2012") => new Date(2012, 12, 12);
-    */
-   const stringToDateConverter = (data: string) => {
-      const dataArray = data.split("/");
-      const dataIntArray = dataArray.map(data => parseInt(data));
-
-      return new Date(dataIntArray[2], dataIntArray[1], dataIntArray[0]);
-   };
-
-   const sortArrayByDate = (array: Sonho[]) => {
-     const sortedArray = array.sort((a, b) => {
-         const dataA = stringToDateConverter(a.data);
-         const dataB = stringToDateConverter(b.data);
-
-         return dataB.getTime() - dataA.getTime()
-      });
-
-      return sortedArray;
-   }
 
    const atualizaFavoritosArray = (sonhoSelecionado: Sonho) => {
       const updatedSonhosArray = sonhosArray.map(sonho => {
@@ -91,6 +69,30 @@ export const FavoritesProvider = ({ children }: ConxtextProps) => {
       const sortedArray = sortArrayByDate(updatedSonhosArray)
 
       setSonhosArray(sortedArray);
+   };
+
+    /**
+    * @returns objeto Date correspondente a string parametro
+    * @param data Data no formato LocaleString (dd/mm/YYYY)
+    *
+    * @example stringToDateConverter("12/12/2012") => new Date(2012, 12, 12);
+    */
+    const stringToDateConverter = (data: string) => {
+      const dataArray = data.split("/");
+      const dataIntArray = dataArray.map(data => parseInt(data));
+
+      return new Date(dataIntArray[2], dataIntArray[1], dataIntArray[0]);
+   };
+
+   const sortArrayByDate = (array: Sonho[]) => {
+     const sortedArray = array.sort((a, b) => {
+         const dataA = stringToDateConverter(a.data);
+         const dataB = stringToDateConverter(b.data);
+
+         return dataB.getTime() - dataA.getTime()
+      });
+
+      return sortedArray;
    };
 
    return (

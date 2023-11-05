@@ -16,13 +16,14 @@ interface modalProps extends ModalProps {
    setModal: React.Dispatch<React.SetStateAction<boolean>>;
    salvar?: (sonho: Sonho) => void;
    sonhoEdit?: Sonho;
+   setSonhoEdit: React.Dispatch<React.SetStateAction<Sonho>>
    acao: "criar" | "editar";
 }
 
-export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props }: modalProps) => {
-   const {addSonho, editSonho} = useContext(FavoritesContext);
+export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, setSonhoEdit, ...props }: modalProps) => {
+   const { addSonho, editSonho } = useContext(FavoritesContext);
 
-   const [id, setId] = useState<string>("")
+   const [id, setId] = useState<string>("");
    const [title, setTitle] = useState<string>("");
    const [data, setData] = useState<string>(new Date().toLocaleDateString());
    const [dataEditable, setDataEditable] = useState<boolean>(false);
@@ -32,17 +33,20 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
    const [newTag, setNewTag] = useState<string>("");
    const badgeTouchable = true;
 
-   useEffect(()=>{
-      acao ==="editar" && settSonhoEdit()
-   },[])
+   useEffect(() => {
+      acao === "editar" && settSonhoEdit();
+   }, []);
 
    const handlePress = () => {
-      const sonhoSelecionado = { id, title, data, descricao, favorite, tags }
+      const sonhoSelecionado = { id, title, data, descricao, favorite, tags };
 
-      salvar ? 
-         salvar(sonhoSelecionado)
-         : acao ==="criar" ? addSonho(sonhoSelecionado) : editSonho(sonhoSelecionado);
+      acao === "editar" && setSonhoEdit(sonhoSelecionado)
 
+      salvar 
+         ? salvar(sonhoSelecionado) 
+         : acao === "criar"
+            ? addSonho(sonhoSelecionado)
+            : editSonho(sonhoSelecionado);
 
       setModal(!modal);
    };
@@ -53,7 +57,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
          const novaTag = { id: id, name: newTag };
 
          setTags([...tags, novaTag]);
-      };
+      }
 
       setNewTag("");
    };
@@ -64,7 +68,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
       setTags(novoArray);
    };
 
-   const settSonhoEdit = () =>{
+   const settSonhoEdit = () => {
       setId(sonhoEdit.id);
       setTitle(sonhoEdit.title);
       setData(sonhoEdit.data);
@@ -108,7 +112,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
                      onChangeText={setDescricao}
                      multiline
                   />
-                  <View style={{ width: "100%", gap: 8}}>
+                  <View style={{ width: "100%", gap: 8 }}>
                      <FormInput
                         label="Tag:"
                         placeholder="Digite uma Tag"
@@ -124,7 +128,12 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
                         {tags.length > 0 &&
                            tags.map(tag => {
                               return (
-                                 <Badge<{touchable: typeof badgeTouchable}> key={tag.id} tag={tag} touchable={badgeTouchable} onPress={()=>removeTag(tag.id)} />
+                                 <Badge<{ touchable: typeof badgeTouchable }>
+                                    key={tag.id}
+                                    tag={tag}
+                                    touchable={badgeTouchable}
+                                    onPress={() => removeTag(tag.id)}
+                                 />
                               );
                            })}
                      </View>
