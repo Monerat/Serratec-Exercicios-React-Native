@@ -10,6 +10,8 @@ import { RootStackParamList } from "../../routes/StackNavigation";
 
 import { styles } from "./styles";
 import { Button } from "../Button";
+import { useContext, useState } from "react";
+import { FavoritesContext } from "../../contexts/FavoritesContext";
 
 type CardSonhoNavigationProp = StackNavigationProp<RootStackParamList, "SonhosStack">;
 interface CardSonhoProps {
@@ -17,19 +19,23 @@ interface CardSonhoProps {
 }
 
 export const CardSonho = ({ sonho }: CardSonhoProps) => {
-   const { id, title, data, descricao, favorite, tags } = sonho;
+   const {atualizaFavoritosArray} = useContext(FavoritesContext);
    const nav = useNavigation<CardSonhoNavigationProp>();
-
+   
+   const {id, data, descricao, favorite, title, tags} = sonho
+   
    const handleNavigation = () => {
       nav.navigate("Detalhes", { sonhoSelecionado: sonho });
    };
 
    const toggleFavorite = () => {
-      console.log("Favorite clicado", sonho.favorite);
+
+      atualizaFavoritosArray(sonho);
    };
+ 
 
    return (
-      <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={handleNavigation}>
+      <TouchableOpacity activeOpacity={0.8} style={styles.card} onLongPress={handleNavigation}>
          <View style={{marginBottom: -6, width: "100%", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
             <Text style={styles.cardTitulo}>{title.length > 30 ? title.substring(0, 29).concat("...") : title}</Text>
 

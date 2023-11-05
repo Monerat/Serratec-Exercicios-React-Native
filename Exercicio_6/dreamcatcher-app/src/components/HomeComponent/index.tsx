@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View, Image, Text, FlatList, ActivityIndicator } from "react-native";
 import { SvgXml } from "react-native-svg";
 
@@ -11,6 +11,7 @@ import { CardSonho } from "../../components/CardSonho";
 
 import { styles } from "./styles";
 import { ApiConfig, Phase, getMoonPhase } from "../../services/api";
+import { FavoritesContext } from "../../contexts/FavoritesContext";
 
 export interface Sonho {
    id?: string;
@@ -34,18 +35,15 @@ export interface headerDataProps {
 
 export const HomeComponent = () => {
    const [modalAberto, setModalAberto] = useState<boolean>(false);
-   const [sonhosArray, setSonhosArray] = useState<Sonho[]>(sonhosContent);
    const [moonPhaseHeaderData, setMoonPhaseHeaderData] = useState<headerDataProps>();
    const [loading, setLoading] = useState<boolean>(true);
+
+   const { sonhosArray } = useContext(FavoritesContext);
 
    useEffect(() => {
       getMoonPhaseDiaAtual();
    });
 
-   function criarSonhoCard(sonho: Sonho) {
-      const id = "S" + Math.floor(Math.random() * 1000);
-      sonhosArray.unshift({ ...sonho, id: id });
-   }
 
    function getMoonPhaseDiaAtual() {
       const dataAtual = new Date();
@@ -139,7 +137,7 @@ export const HomeComponent = () => {
             </View>
          )}
          {modalAberto && (
-            <ModalSonho modal={modalAberto} setModal={setModalAberto} salvar={criarSonhoCard} acao="criar" />
+            <ModalSonho modal={modalAberto} setModal={setModalAberto} acao="criar" />
          )}
       </View>
    );

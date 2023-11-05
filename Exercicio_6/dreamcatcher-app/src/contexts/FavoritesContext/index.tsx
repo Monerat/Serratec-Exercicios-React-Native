@@ -1,39 +1,101 @@
 import { createContext, useState } from "react";
 import { Sonho } from "../../components/HomeComponent";
+import { sonhosContent } from "../../../mockupContent/SonhoContent";
 
 interface ConxtextProps {
-    children: React.ReactNode
+   children: React.ReactNode;
 }
 
 export interface IFavoritesContext {
-    addFavorite: () => void,
-    removeFavorite: () => void,
-    favoriteSonhos: Sonho[]
-};
+   atualizaFavoritosArray: (sonho: Sonho) => void;
+   addSonho: (sonho: Sonho) => void;
+   editSonho: (sonho: Sonho) => void;
+   sonhosArray: Sonho[];
+}
 
 export const FavoritesContext = createContext<IFavoritesContext>({
-    addFavorite: () => {},
-    removeFavorite: () => {},
-    favoriteSonhos: []
+   sonhosArray: [],
+   addSonho: (sonho: Sonho) => {},
+   editSonho: (sonho: Sonho) => {},
+   atualizaFavoritosArray: (sonho: Sonho) => {},
 });
 
-export const FavoritesProvider = ( { children }  : ConxtextProps) => {
-    const [favoriteSonhos, setFavoriteSonhos] = useState<Sonho[]>([])
+export const FavoritesProvider = ({ children }: ConxtextProps) => {
+   const [sonhosArray, setSonhosArray] = useState<Sonho[]>(sonhosContent);
 
-    const addFavorite = () => {
-        console.log("Favorito Adicionado");
-        
-    };
+   const getSonhoArray = (): Sonho[] => {
+      return sonhosArray;
+   };
 
-    const removeFavorite = () => {
-        console.log("Favorito Reemovido");
-        
-    };
+   const addSonho = (sonho: Sonho) => {
+      setSonhosArray([sonho, ...sonhosArray]);
 
-    return (
-        <FavoritesContext.Provider
-            value={{addFavorite, removeFavorite, favoriteSonhos}}>
-            {children}
-        </FavoritesContext.Provider>
-    );
+      console.log("Favorito Adicionado");
+   };
+
+   const editSonho = (sonho: Sonho) => {
+      const updatedSonhosArray = sonhosArray.map(sonhoDB => {
+         if (sonhoDB.id === sonho.id) {
+            return {
+               ...sonhoDB,
+               title: sonho.title,
+               data: sonho.data,
+               descricao: sonho.descricao,
+               favorite: sonho.favorite,
+               tags: sonho.tags,
+            };
+         }
+      });
+
+      const sortedArray = sortArrayByDate(updatedSonhosArray)
+
+      setSonhosArray(sortedArray);
+      console.log("Favorito Editado", updatedSonhosArray);
+   };
+
+   /**
+    * @returns objeto Date correspondente a string parametro
+    * @param data Data no formato LocaleString (dd/mm/YYYY)
+    *
+    * @example stringToDateConverter("12/12/2012") => new Date(2012, 12, 12);
+    */
+   const stringToDateConverter = (data: string) => {
+      const dataArray = data.split("/");
+      const dataIntArray = dataArray.map(data => parseInt(data));
+
+      return new Date(dataIntArray[2], dataIntArray[1], dataIntArray[0]);
+   };
+
+   const sortArrayByDate = (array: Sonho[]) => {
+     const sortedArray = array.sort((a, b) => {
+         const dataA = stringToDateConverter(a.data);
+         const dataB = stringToDateConverter(b.data);
+
+         return dataB.getTime() - dataA.getTime()
+      });
+
+      return sortedArray;
+   }
+
+   const atualizaFavoritosArray = (sonhoSelecionado: Sonho) => {
+      const updatedSonhosArray = sonhosArray.map(sonho => {
+         if (sonho.id === sonhoSelecionado.id) {
+            let favoritado = sonho.favorite;
+
+            return { ...sonhoSelecionado, favorite: !favoritado };
+         } else {
+            return sonho;
+         }
+      });
+
+      const sortedArray = sortArrayByDate(updatedSonhosArray)
+
+      setSonhosArray(sortedArray);
+   };
+
+   return (
+      <FavoritesContext.Provider value={{ atualizaFavoritosArray, addSonho, editSonho, sonhosArray }}>
+         {children}
+      </FavoritesContext.Provider>
+   );
 };

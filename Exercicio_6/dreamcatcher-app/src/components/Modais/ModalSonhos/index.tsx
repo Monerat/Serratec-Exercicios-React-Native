@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Modal, ModalProps, ScrollView, View } from "react-native";
 
 import { Sonho, TagDataProps } from "../../../components/HomeComponent";
@@ -9,16 +9,19 @@ import { styles } from "./styles";
 import PencilIcon from "../../../assets/PencilIcon.png";
 import PupilCatIcon from "../../../assets/pupil-cat.png";
 import { Badge } from "../../Badges/Badge";
+import { FavoritesContext } from "../../../contexts/FavoritesContext";
 
 interface modalProps extends ModalProps {
    modal: boolean;
    setModal: React.Dispatch<React.SetStateAction<boolean>>;
-   salvar: (sonho: Sonho) => void;
+   salvar?: (sonho: Sonho) => void;
    sonhoEdit?: Sonho;
    acao: "criar" | "editar";
 }
 
 export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props }: modalProps) => {
+   const {addSonho, editSonho} = useContext(FavoritesContext);
+
    const [id, setId] = useState<string>("")
    const [title, setTitle] = useState<string>("");
    const [data, setData] = useState<string>(new Date().toLocaleDateString());
@@ -34,7 +37,13 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
    },[])
 
    const handlePress = () => {
-      salvar({ id,title, data, descricao, favorite, tags })
+      const sonhoSelecionado = { id, title, data, descricao, favorite, tags }
+
+      salvar ? 
+         salvar(sonhoSelecionado)
+         : acao ==="criar" ? addSonho(sonhoSelecionado) : editSonho(sonhoSelecionado);
+
+
       setModal(!modal);
    };
 
@@ -131,7 +140,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
                         marginTop: 28,
                      }}>
                      <Button text="Cancelar" buttonStyle="secondary" onPress={() => setModal(!modal)} />
-                     <Button text="Salvar" onPress={handlePress} />
+                     <Button text={acao} onPress={handlePress} />
                   </View>
                </ScrollView>
             </View>

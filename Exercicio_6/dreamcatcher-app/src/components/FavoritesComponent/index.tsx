@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View, Image, Text, FlatList } from "react-native";
 
 import SleepingCat from "../../assets/sleeping-icon.png";
@@ -6,15 +6,26 @@ import SleepingCat from "../../assets/sleeping-icon.png";
 import { styles } from "./styles";
 import { CardSonho } from "../CardSonho";
 import { Sonho } from "../HomeComponent";
+import { FavoritesContext } from "../../contexts/FavoritesContext";
 
 export const FavoritesComponent = () => {
-   const [sonhosArray, setSonhosArray] = useState<Sonho[]>([]);
+   const {sonhosArray} = useContext(FavoritesContext)
+   const [sonhosFavoritosArray, setSonhosFavoritosArray] = useState<Sonho[]>([])
+
+   useEffect(()=>{
+      settaDataSonhosFavoritos()
+   },[sonhosArray]);
+
+   function settaDataSonhosFavoritos(){
+     let sonhosFavoritos = sonhosArray.filter(sonho => sonho.favorite === true)
+     setSonhosFavoritosArray(sonhosFavoritos)
+   }
 
    return (
       <View style={styles.container}>
-         {sonhosArray.length !== 0 ? (
+         {sonhosFavoritosArray.length !== 0 ? (
             <FlatList
-               data={sonhosArray}
+               data={sonhosFavoritosArray}
                showsVerticalScrollIndicator={false}
                style={{ width: "85%", flex: 1 }}
                keyExtractor={data => data.id!}
