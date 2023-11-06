@@ -1,4 +1,4 @@
-import { Text, View, ViewProps, TouchableOpacity, TouchableOpacityProps, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { Text, TouchableOpacity, TouchableOpacityProps, View, ViewProps } from "react-native";
 
 import { TagDataProps } from "../../HomeComponent/index";
 import { styles } from "./styles";

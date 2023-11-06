@@ -1,6 +1,6 @@
-import { Text, View, ViewProps, TouchableOpacity, TouchableOpacityProps, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { Text, TouchableOpacity, TouchableOpacityProps, View, ViewProps } from "react-native";
 
-import { TagDataProps } from "../../../screens/Home";
+import { TagDataProps } from "../../HomeComponent/index";
 import { styles } from "./styles";
 
 type TouchableOrView<T extends {touchable: boolean} | undefined> = T extends {touchable: true} ? BadgeTouchableProps : BadgeViewProps;
@@ -14,21 +14,19 @@ interface BadgeViewProps extends ViewProps {
     touchable?: boolean
 }
 
-
-
 export const Badge = <T extends {touchable: boolean} | undefined> ({tag, touchable, ...props}: TouchableOrView<T>) => {
    return touchable ? (
       <TouchableOpacity
          activeOpacity={0.8}
          style={styles.badge}
          {...props}>
-         <Text style={{ color: "white", fontSize: 12 }}>{tag.name}</Text>
+         <Text style={{ color: "white", fontSize: 10 }}>{tag.name}</Text>
       </TouchableOpacity>
    ) : (
       <View
          style={styles.badge}
          {...props}>
-         <Text style={{ color: "white", fontSize: 12 }}>{tag.name}</Text>
+         <Text style={{ color: "white", fontSize: 10 }}>{tag.name}</Text>
       </View>
    );
 };
