@@ -23,10 +23,6 @@ export const FavoritesContext = createContext<IFavoritesContext>({
 export const FavoritesProvider = ({ children }: ConxtextProps) => {
    const [sonhosArray, setSonhosArray] = useState<Sonho[]>([]);
 
-   const getSonhoArray = (): Sonho[] => {
-      return sonhosArray;
-   };
-
    const addSonho = (sonho: Sonho) => {
       setSonhosArray([sonho, ...sonhosArray]);
 
@@ -44,9 +40,10 @@ export const FavoritesProvider = ({ children }: ConxtextProps) => {
                favorite: sonho.favorite,
                tags: sonho.tags,
             };
-         } else {
-            return sonhoDB
-         }
+         } 
+
+         return sonhoDB
+ 
       });
 
       const sortedArray = sortArrayByDate(updatedSonhosArray)
@@ -61,9 +58,10 @@ export const FavoritesProvider = ({ children }: ConxtextProps) => {
             let favoritado = sonho.favorite;
 
             return { ...sonhoSelecionado, favorite: !favoritado };
-         } else {
-            return sonho;
          }
+
+         return sonho;
+  
       });
 
       const sortedArray = sortArrayByDate(updatedSonhosArray)
