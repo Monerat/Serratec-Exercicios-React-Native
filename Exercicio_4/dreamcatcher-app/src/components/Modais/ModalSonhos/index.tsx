@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
-import { Modal, ModalProps, ScrollView, View, Text, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Modal, ModalProps, ScrollView, View } from "react-native";
 
-import { Sonho, TagDataProps } from "../../../screens/Home";
+import { Sonho, TagDataProps } from "../../../components/HomeComponent";
 import { Button } from "../../Button";
-import { FormInputIcon } from "../../Inputs/FormInputIcon";
-import { FormMultilineInput } from "../../Inputs/FormMultilineInput";
-import { FormSinglelineInput } from "../../Inputs/FormSinglelineInput";
+import { FormInput } from "../../Inputs/FormInput";
 
-import { styles } from "./styles";
+
 import PencilIcon from "../../../assets/PencilIcon.png";
 import PupilCatIcon from "../../../assets/pupil-cat.png";
 import { Badge } from "../../Badges/Badge";
+import { styles } from "./styles";
 
 interface modalProps extends ModalProps {
    modal: boolean;
@@ -36,7 +35,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
    },[])
 
    const handlePress = () => {
-      salvar({ id,title, data, descricao, favorite, tags })
+      salvar({ id, title, data, descricao, favorite, tags })
       setModal(!modal);
    };
 
@@ -62,7 +61,6 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
       setTitle(sonhoEdit.title);
       setData(sonhoEdit.data);
       setDescricao(sonhoEdit.descricao);
-      setFavorite(sonhoEdit.favorite);
       setTags(sonhoEdit.tags);
    };
 
@@ -78,36 +76,37 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
          <View style={styles.modalContainer}>
             <View style={styles.modalView}>
                <ScrollView contentContainerStyle={styles.contentContainer}>
-                  <FormSinglelineInput
+                  <FormInput
                      label="Adicione um sonho"
                      placeholder="Digite um título"
                      value={title}
-                     setValue={setTitle}
+                     onChangeText={setTitle}
                   />
-                  <FormInputIcon
+                  <FormInput
                      label="Data:"
                      value={data}
-                     keyboardType="numeric"
+                     keyboardType="phone-pad"
                      onChangeText={setData}
-                     iconButton={PencilIcon}
+                     icon={PencilIcon}
                      iconStyle={{ height: 24, width: 24, tintColor: "white", margin: 4 }}
                      editable={dataEditable}
                      onIconPress={() => setDataEditable(!dataEditable)}
                   />
-                  <FormMultilineInput
+                  <FormInput
                      label="Descrição:"
                      placeholder="Descreva seu sonho"
                      value={descricao}
-                     setValue={setDescricao}
+                     onChangeText={setDescricao}
+                     multiline
                   />
                   <View style={{ width: "100%", gap: 8}}>
-                     <FormInputIcon
+                     <FormInput
                         label="Tag:"
                         placeholder="Digite uma Tag"
                         value={newTag}
                         onChangeText={setNewTag}
                         editable
-                        iconButton={PupilCatIcon}
+                        icon={PupilCatIcon}
                         iconStyle={{ height: 36, width: 36 }}
                         onIconPress={handleTags}
                      />
