@@ -25,8 +25,6 @@ export const FavoritesProvider = ({ children }: ConxtextProps) => {
 
    const addSonho = (sonho: Sonho) => {
       setSonhosArray([sonho, ...sonhosArray]);
-
-      console.log("Favorito Adicionado");
    };
 
    const editSonho = (sonho: Sonho) => {
@@ -49,7 +47,6 @@ export const FavoritesProvider = ({ children }: ConxtextProps) => {
       const sortedArray = sortArrayByDate(updatedSonhosArray)
 
       setSonhosArray(sortedArray);
-      console.log("Favorito Editado");
    };
 
    const atualizaFavoritosArray = (sonhoSelecionado: Sonho) => {

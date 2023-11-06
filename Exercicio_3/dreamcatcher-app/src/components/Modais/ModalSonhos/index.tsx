@@ -21,7 +21,7 @@ interface modalProps extends ModalProps {
 }
 
 export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, setSonhoEdit, ...props }: modalProps) => {
-   const [id, setId] = useState<string>("")
+   const [id, setId] = useState<string | null>(null)
    const [title, setTitle] = useState<string>("");
    const [data, setData] = useState<string>(new Date().toLocaleDateString());
    const [dataEditable, setDataEditable] = useState<boolean>(false);
@@ -36,11 +36,12 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, setSonhoE
    },[])
 
    const handlePress = () => {
-      const sonhoSelecionado = { id, title, data, descricao, favorite, tags };
+      const generatedId = "S" + Math.floor(Math.random() * 1000);
+      const sonhoSelecionado = { id: id ?? generatedId, title, data, descricao, favorite, tags };
 
       acao === "editar" && setSonhoEdit(sonhoSelecionado)
 
-      salvar(sonhoSelecionado);
+      salvar && salvar(sonhoSelecionado);
       setModal(!modal);
    };
 
