@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { View, Text } from "react-native";
 import { RouteProp, useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+import { Text, View } from "react-native";
 
-import { Button } from "../Button";
-import { Badge } from "../Badges/Badge";
-import { ModalSonho } from "../Modais/ModalSonhos";
-import { RootStackParamList } from "../../routes/StackNavigation";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../routes/StackNavigation";
+import { Badge } from "../Badges/Badge";
+import { Button } from "../Button";
+import { ModalSonho } from "../Modais/ModalSonhos";
 
-import { styles } from "./styles";
 import { Sonho } from "../HomeComponent";
+import { styles } from "./styles";
 
 type SonhoDetailsRouteProp = RouteProp<RootStackParamList, "Detalhes">;
 type SonhoDetailsNavigationProp = StackNavigationProp<RootStackParamList, "SonhosStack" | "FavoritosStack">;
@@ -25,7 +25,7 @@ export const SonhoDetailsComponent = ({ sonhoSelecionado }: SonhoDetailsProps) =
    const [modalAberto, setModalAberto] = useState<boolean>(false);
 
    const editarSonho = (sonhoEditado: Sonho) => {
-      alert(JSON.stringify(sonhoEditado));
+
       setSonhoEditado(sonhoEditado);
    };
 
