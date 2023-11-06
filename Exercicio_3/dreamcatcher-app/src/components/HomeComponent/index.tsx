@@ -1,64 +1,69 @@
 import { useState } from "react";
-import { FlatList, Image, Text, View } from "react-native";
-
-import SleepingCat from "../../assets/sleeping-icon.png";
-
+import { FlatList, ScrollView, View } from "react-native";
 
 import { Button } from "../../components/Button";
 import { CardSonho } from "../../components/CardSonho";
-import { ModalSonho } from "../../components/Modais/ModalSonhos";
 
+import { EmptyMessage } from "../EmptyMessage/EmptyMessage";
+import { FormInput } from "../Inputs/FormInput";
 import { styles } from "./styles";
 
 export interface Sonho {
    id?: string;
    title: string;
-   data: string;
    descricao: string;
    favorite: boolean;
-   tags?: TagDataProps[];
-}
-
-export interface TagDataProps {
-   id: string;
-   name: string;
 }
 
 export const HomeComponent = () => {
-   const [modalAberto, setModalAberto] = useState<boolean>(false);
    const [sonhosArray, setSonhosArray] = useState<Sonho[]>([]);
+   const [id, setId] = useState<string | null>(null);
+   const [title, setTitle] = useState<string>("");
+   const [descricao, setDescricao] = useState<string>("");
+   const [favorite, setFavorite] = useState<boolean>(false);
 
-   function criarSonhoCard(sonho: Sonho) {
-      sonhosArray.unshift(sonho);
+   function criarSonhoCard() {
+      const generatedId = "S" + Math.floor(Math.random() * 1000);
+      const sonhoSelecionado = { id: id ?? generatedId, title, descricao, favorite };
+
+      setSonhosArray([sonhoSelecionado, ...sonhosArray]);
+      limparInputs([setTitle, setDescricao]);
+   }
+
+   const limparInputs = (setStateArray: React.Dispatch<React.SetStateAction<string>>[]) => {
+      setStateArray.forEach(setState => {
+         setState("");
+      });
    };
 
    return (
-         <View style={styles.container}>
-            
-            <View style={{ flex: 0.2, justifyContent: "center"}}>
-               <Button
-                  text="Adicionar Sonho"
-                  styleAdjustments={{ maxWidth: "50%", maxHeight: "50%", minHeight: 50 }}
-                  onPress={() => setModalAberto(true)}
-               />
-            </View>
-            {sonhosArray.length !== 0 ? (
-               <FlatList
-                  data={sonhosArray}
-                  showsVerticalScrollIndicator={false}
-                  style={{ width: "85%", flex: 1  }}
-                  keyExtractor={data => data.id!}
-                  renderItem={({ item, index }) => <CardSonho sonho={item} />}
-               />
-            ) : (
-               <View style={styles.sonhoContainer}>
-                  <Image source={SleepingCat} style={{ tintColor: "white" }} />
-                  <Text style={styles.textBase}>Ops, parece que não tem nenhum sonho aqui</Text>
-               </View>
-            )}
-            {modalAberto && (
-               <ModalSonho modal={modalAberto} setModal={setModalAberto} salvar={criarSonhoCard} acao="criar" />
-            )}
-         </View>
+      <View style={styles.container}>
+         <ScrollView style={styles.formContainer} contentContainerStyle={styles.contentContainer}>
+            <FormInput label="Adicione um sonho" placeholder="Digite um título" value={title} onChangeText={setTitle} />
+            <FormInput
+               label="Descrição:"
+               placeholder="Descreva seu sonho"
+               value={descricao}
+               onChangeText={setDescricao}
+               multiline
+            />
+            <Button
+               text="Adicionar Sonho"
+               styleAdjustments={{ maxWidth: "80%", maxHeight: "50%", minHeight: 50 }}
+               onPress={() => criarSonhoCard()}
+            />
+         </ScrollView>
+         {sonhosArray.length !== 0 ? (
+            <FlatList
+               data={sonhosArray}
+               showsVerticalScrollIndicator={false}
+               style={{ width: "100%", flex: 1 }}
+               keyExtractor={data => data.id!}
+               renderItem={({ item, index }) => <CardSonho sonho={item} />}
+            />
+         ) : (
+            <EmptyMessage />
+         )}
+      </View>
    );
 };

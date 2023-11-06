@@ -6,15 +6,20 @@ export const styles = StyleSheet.create({
       flexDirection: "column",
       alignItems: "center",
       paddingTop: StatusBar.currentHeight * 2,
-
-      gap: 18
+      paddingHorizontal: 36,
    },
-   sonhoContainer: {
-      flex: 1,
+   formContainer: {
+      width: "100%",
+      flex: 0.8,
       flexDirection: "column",
+      gap: 40
+   },
+   contentContainer:{
+      width: "100%",
+      justifyContent: "center",
       alignItems: "center",
-      justifyContent: "flex-start",
-      paddingTop: 64,
+      paddingVertical: 16,
+      gap: 32,
    },
    textBase: {
       textAlign: "center",

@@ -18,21 +18,6 @@ export const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: "700",
    },
-   dividerContainer: {
-      width: "100%",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: 10.5,
-   },
-   divider: {
-      width: "100%",
-      height: 0,
-      maxWidth: "70%",
-
-      borderBottomColor: "white",
-      borderBottomWidth: 1,
-   },
    cardText: {
       margin: 4,
 

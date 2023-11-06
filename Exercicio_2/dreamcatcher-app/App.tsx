@@ -13,10 +13,6 @@ export default function App() {
          <View style={styles.container}>
 
             <View style={styles.formContainer}>
-               <TouchableOpacity activeOpacity={0.7} style={styles.button}>
-                  <Text style={styles.buttonText}>Adicionar Sonho</Text>
-               </TouchableOpacity>
-
                <View style={styles.formInputContainer}>
                   <Text style={styles.inputLabel}>Adicione um sonho:</Text>
                   <TextInput
@@ -34,8 +30,11 @@ export default function App() {
                      placeholderTextColor="#D9D9D980"
                   />
                </View>
+               <TouchableOpacity activeOpacity={0.7} style={styles.button}>
+                  <Text style={styles.buttonText}>Adicionar Sonho</Text>
+               </TouchableOpacity>
             </View>
-            
+
             <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false} >
                <View style={styles.card}>
                   <View
