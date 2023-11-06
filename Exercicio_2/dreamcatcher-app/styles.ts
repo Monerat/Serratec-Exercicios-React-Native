@@ -6,45 +6,31 @@ export const styles = StyleSheet.create({
       flex: 1,
    },
 
-   scroll: {
+   container: {
       flex: 1,
-      paddingHorizontal: 42,
-   },
-   contentContainer:{
-      minHeight: "100%",
-
-      justifyContent: "space-around",
-      paddingTop: StatusBar.currentHeight,
-      paddingBottom: 48,
-   },
-
-   sonhoContainer: {
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
-      paddingTop: 28,
-      gap: 8,
+      paddingTop: StatusBar.currentHeight*2,
+   },
+
+   scroll: {
+      width: "85%",
+      flex: 1,
+      paddingBottom: 48
    },
 
    formContainer: {
+      width: "85%",
+      flex: 0.8,
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
-      gap: 20,
+      justifyContent: "space-evenly",
    },
    formInputContainer: {
       width: "100%",
 
       flexDirection: "column",
       gap: 4,
-   },
-   formInputHorizontal: {
-      width: "100%",
-
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
-      gap: 8,
    },
 
    inputLabel: {
@@ -94,9 +80,6 @@ export const styles = StyleSheet.create({
    },
 
    button: {
-      alignSelf: "flex-end",
-      marginTop: 28,
-
       alignItems: "center",
       justifyContent: "center",
       paddingHorizontal: 42,
@@ -108,16 +91,37 @@ export const styles = StyleSheet.create({
       elevation: 3
    },
    buttonIcon: {
-      padding: 6,
-
-      borderRadius: 50,
-      backgroundColor: "#DD8EEA",
-      elevation: 3
+      padding: "2%",
    },
    buttonText: {
       color: "white",
       fontSize: 14,
       fontWeight: "bold",
       textTransform: "uppercase",
+   },
+
+   card: {
+      width: "100%",
+      marginVertical: 20,
+
+      flex: 1,
+      flexDirection: "column",
+      padding: "5%",
+      gap: 12,
+
+      borderRadius: 13,
+      backgroundColor: "#5C5FB2",
+   },
+   cardTitulo: {
+      color: "white",
+      fontSize: 18,
+      fontWeight: "700",
+   },
+   cardText: {
+      margin: 4,
+
+      color: "white",
+      fontSize: 14,
+      lineHeight: 14,
    },
 });
