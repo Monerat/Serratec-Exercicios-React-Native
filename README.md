@@ -69,6 +69,8 @@
 -  TypeScript
 -  [Axios](https://github.com/axios/axios)
 -  [react-navigation](https://reactnavigation.org/docs/getting-started/)
+-  [React Native SVG](https://github.com/software-mansion/react-native-svg)
+-  [React Native Async Storage](https://react-native-async-storage.github.io/async-storage/)
 -  [Moon Phases API](http://www.wdisseny.com/lluna/?lang=en)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -91,7 +93,7 @@ Todos os pre-requisitos são explicados em aula e o passo a passo também. Segui
    ```
 2. Vá para pasta do exercício que deseja fazer
    ```sh
-   cd Exercicio_1
+   cd ReactNative_2023-2/Exercicio_1
    ```
 3. Instale os pacotes
    ```sh
@@ -123,61 +125,103 @@ Todos os pre-requisitos são explicados em aula e o passo a passo também. Segui
 Esse é um projeto de ensino e feito para isso. Criado para ensinar a criação de componentes, estilização, utilização de contextos, utilização de banco de dados embarcado, utilização de requisições para API e navegação, utilizando typescrypt para todas as etapas.
 Cada pasta contém a etapa anterior completa, e dever ser utilizada para continuar o desenvolvimento do app de acordo com a seção "Conteúdo" deste material.
 
-### Conteúdo
+### Exercícios
 
 #### Exercicio 1
 <div style={{ display: flex, flex-direction: row }}>
   <p>
-    No Exercício 1 o objetivo é criar o projeto e fazer um clone visual da tela abaixo. Nãao é necessário que existam funções atreladas aos botões e aos Input
+    No Exercício 1 o objetivo é criar o projeto e fazer um clone visual da tela abaixo. Não é necessário que existam funções atreladas aos botões e aos Input
   </p>
 
-  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Splashscreen.png?raw=true" alt="Tela Placeholder" width="200" height="500">
+  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercício_2-Ref/Exercício_2-Ref.jpeg?raw=true" alt="Tela Inicial clone visual" width="200" height="500">
  </div>
 
 #### Exercicio 2
 <div style={{ display: flex, flex-direction: row }}>
   <p>
     No Exercício 2 o objetivo será componentizar a tela anteriormente criada, agora dando funções às partes necessárias. Sendo possível cadastrar e adicionar um sonho a uma lista que será mostrada na página inicial.
+    <h5> Requisitos </h5>
+    <ul>
+      <li> cadastro feito através de um modal </li>
+      <li> data deve sempre iniciar com a data atual </li>
+      <li> adicionar e retirar Tags durante o cadastro, tendo um máximo de 3 tags por sonho </li>
+      <li> ao serem adicionada deve ser possível ver as tags já cadastradas </li>
+      <li> os sonhos devem ser exibidos em cards </li>
+    </ul>
   </p>
 
-  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Splashscreen.png?raw=true" alt="Tela Placeholder" width="200" height="500">
- </div>
+  <div>
+    <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_3-Ref/Tela_1-primeiro-acesso.jpeg?raw=true" alt="Tela Inicial sem dados" width="200" height="500">
+    <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_3-Ref/modal-1.jpeg?raw=true" alt="Exemplo modal 1" width="200" height="500">
+    <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_3-Ref/modal-2.jpeg?raw=true" alt="Exemplo modal 2" width="200" height="500">
+    <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_3-Ref/Tela_1-conteúdo.jpeg?raw=true" alt="Tela Inicial com dados" width="200" height="500">
+  </div>
+</div>
 
 #### Exercicio 3
 <div style={{ display: flex, flex-direction: row }}>
   <p>
-    No Exercício 3 deverá ser feita possível uma navegação até uma segunda página onde posteriormente serão inseridos a lista de sonhos "favoritados".
+    No Exercício 3 deverá ser feita uma navegação até uma uma tela de Detalhes dos sonhos, e uma tela de Favoritos onde posteriormente serão inseridos a lista de sonhos "favoritados".
+    <h5> Requisitos </h5>
+    <ul>
+      <li> a navegação para a páginas de detalhes deve ser feita através de um onPress, ou onLongPress, no Card de Sonho </li>
+      <li> na tela de Detalhes de sonhos deve haver o modal Editar o sonho</li>
+      <li> na tela de Detalhes deve existir um botão de "voltar"</li>
+    </ul>
   </p>
 
-  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Splashscreen.png?raw=true" alt="Tela Placeholder" width="200" height="500">
+  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_4-Ref/Tela_2-Detalhes.jpeg?raw=true" alt="Tela Detalhes" width="200" height="500">
+  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_4-Ref/Tela_2-EditarModal-1.jpeg?raw=true" alt="Tela Modal editar" width="200" height="500">
+  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_4-Ref/Tela_2-SonhoEditado.jpeg?raw=true" alt="Tela Sonho Editado" width="200" height="500">
+  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_4-Ref/Tela_3-favoritos.jpeg?raw=true" alt="Tela Favoritos sem dados" width="200" height="500">
  </div>
 
 #### Exercicio 4
 <div style={{ display: flex, flex-direction: row }}>
   <p>
     No Exercício 4 deverá ser criado um service para requisições utilizando a <a href="http://www.wdisseny.com/lluna/?lang=en">MoonPhaseAPI</a>. na tela inicial, acima do botão "Adicionar Sonho" deverá ser exibida fase da lua do dia atual, juntamente com o ano, mês, dia do mês e da semana.
+    <h5> Requisitos </h5>
+    <ul>
+      <li> deverá ser utilizada a biblioteca <a href="https://github.com/software-mansion/react-native-svg">React Native SVG</a> para a exibição da imagem mostrando a fase atual da Lua </li>
+    </ul> 
   </p>
 
-  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Splashscreen.png?raw=true" alt="Tela Placeholder" width="200" height="500">
+  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_5-Ref/FasesDaLuaAPI.jpeg?raw=true" alt="Tela Inicial com API" width="200" height="500">
  </div>
 
 #### Exercicio 5
 <div style={{ display: flex, flex-direction: row }}>
   <p>
-    No Exercício 5 deverá ser criado um Contexto que contenha os métodos necessários para "favoritar" um sonho. O botão "favoritar" deverá ser adicionado ao componente Card de sonho e implementar os métodos do contexto.
+    No Exercício 5 deverá ser criado um Contexto que contenha os métodos relacionados às operações com a lista de sonhos. Esses métodos deverão ser implementados nos componentes nosnecessários já existentes.
     Os sonhos favoritados deverão ser exibidos na tela anteriormente criada para eles.(<a href="#exercicio-3"> ver Exercício 3 </a>)
+    <h5> Requisitos </h5>
+    <ul>
+      <li> o state contendo a Lista de Sonhos deverá ser instanciado no Contexto </li>
+      <li> o contexto deverá conter um método para adicionar Sonho </li>
+      <li> o contexto deverá conter um método para editar </li>
+      <li> o contexto deverá conter um método para atualizar a propriedade "favorito" dos sonhos </li>
+      <li> a tela de Favoritos agora deverá mostrar uma lista contendo apenas os sonhos Favoritados </li>
+      <li> deverá ser implementado um método que ordene as listas de sonhos, e sonhos favoritos, de acordo com a sua data </li>
+      <li> caso a propriedade "favorito" de um sonho seja alterada ele deve ser retirado da lista de favoritos </li>
+      <li> o compoente(s) responsável por editar e adicionar sonhos deverá ser refatorado para utilizar os métodos do contexto </li>
+    </ul> 
+  </p>
   </p>
 
-  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Splashscreen.png?raw=true" alt="Tela Placeholder" width="200" height="500">
+  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_6-Ref/Tela_1-FavoritosImplemented.jpeg?raw=true" alt="Tela Inicial com favoritos" width="200" height="500">
+  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Exercicio_6-Ref/Tela_3-favoritosTrue.jpeg?raw=true" alt="Tela Favoritos" width="200" height="500">
  </div>
 
 #### Exercicio 6
 <div style={{ display: flex, flex-direction: row }}>
   <p>
-    Por fim Exercício 6 será feita a integração com o banco de dados embarcado. Deverá ser utilizado o AsyncStorage para guardar sonhos criados.
+    Por fim Exercício 6 será feita a integração com o banco de dados embarcado. Deverá ser utilizado o <a href="https://react-native-async-storage.github.io/async-storage/docs/install/">React Native Async Storage</a> para guardar sonhos criados, e suas possíveis alterações.
+    <h5> Requisitos </h5>
+    <ul>
+      <li> os métodos do contexto que alteram o estado da lista de sonho ou suas propriedades terão que salvar as mudanças no Async Storage </li>
+      <li> deverá existir um método para trazer os dados salvos no Async Storage para serem exibidos em tela</li>
+    </ul>
   </p>
-
-  <img src="https://github.com/BragaMPedro/ReactNative_2023-2/blob/main/images/Splashscreen.png?raw=true" alt="Tela Placeholder" width="200" height="500">
  </div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
