@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { Sonho } from "../../components/HomeComponent";
-import { sonhosContent } from "../../../mockupContent/SonhoContent";
+
 
 interface ConxtextProps {
    children: React.ReactNode;
@@ -21,7 +21,7 @@ export const FavoritesContext = createContext<IFavoritesContext>({
 });
 
 export const FavoritesProvider = ({ children }: ConxtextProps) => {
-   const [sonhosArray, setSonhosArray] = useState<Sonho[]>(sonhosContent);
+   const [sonhosArray, setSonhosArray] = useState<Sonho[]>([]);
 
    const getSonhoArray = (): Sonho[] => {
       return sonhosArray;

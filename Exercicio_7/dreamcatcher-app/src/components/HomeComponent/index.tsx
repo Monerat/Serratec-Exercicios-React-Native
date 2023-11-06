@@ -3,7 +3,7 @@ import { View, Image, Text, FlatList, ActivityIndicator } from "react-native";
 import { SvgXml } from "react-native-svg";
 
 import SleepingCat from "../../assets/sleeping-icon.png";
-import { sonhosContent } from "../../../mockupContent/SonhoContent";
+
 
 import { Button } from "../../components/Button";
 import { ModalSonho } from "../../components/Modais/ModalSonhos";

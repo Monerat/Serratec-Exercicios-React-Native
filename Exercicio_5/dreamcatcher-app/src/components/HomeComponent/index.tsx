@@ -3,7 +3,7 @@ import { View, Image, Text, FlatList, ActivityIndicator } from "react-native";
 import { SvgXml } from "react-native-svg";
 
 import SleepingCat from "../../assets/sleeping-icon.png";
-import { sonhosContent } from "../../../mockupContent/SonhoContent";
+
 
 import { Button } from "../../components/Button";
 import { ModalSonho } from "../../components/Modais/ModalSonhos";
@@ -34,7 +34,7 @@ export interface headerDataProps {
 
 export const HomeComponent = () => {
    const [modalAberto, setModalAberto] = useState<boolean>(false);
-   const [sonhosArray, setSonhosArray] = useState<Sonho[]>(sonhosContent);
+   const [sonhosArray, setSonhosArray] = useState<Sonho[]>([]);
    const [moonPhaseHeaderData, setMoonPhaseHeaderData] = useState<headerDataProps>();
    const [loading, setLoading] = useState<boolean>(true);
 

@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { Sonho } from "../../components/HomeComponent";
-import { sonhosContent } from "../../../mockupContent/SonhoContent";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface ConxtextProps {

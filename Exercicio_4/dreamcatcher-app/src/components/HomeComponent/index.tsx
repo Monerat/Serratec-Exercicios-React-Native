@@ -3,7 +3,7 @@ import { View, Image, Text, FlatList, ImageBackground } from "react-native";
 
 import SleepingCat from "../../assets/sleeping-icon.png";
 import BgImage from "../../assets/bg-padrao.png";
-import { sonhosContent } from "../../../mockupContent/SonhoContent";
+
 
 import { Button } from "../../components/Button";
 import { ModalSonho } from "../../components/Modais/ModalSonhos";
@@ -27,7 +27,7 @@ export interface TagDataProps {
 
 export const HomeComponent = () => {
    const [modalAberto, setModalAberto] = useState<boolean>(false);
-   const [sonhosArray, setSonhosArray] = useState<Sonho[]>(sonhosContent);
+   const [sonhosArray, setSonhosArray] = useState<Sonho[]>([]);
 
    function criarSonhoCard(sonho: Sonho) {
       const id = "S" + Math.floor(Math.random() * 1000);
