@@ -48,9 +48,8 @@ export const Button = ({
          return styles.buttonSecondary
       } else if (buttonStyle === "text") {
          return styles.buttonVariant
-      } else {
+      } 
          return styles.buttonIcon
-      };
    };
 
    return (
