@@ -30,10 +30,17 @@ export const CardSonho = ({ sonho }: CardSonhoProps) => {
 
    return (
       <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={handleNavigation}>
-         <View style={{marginBottom: -6, width: "100%", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
+         <View
+            style={{
+               marginBottom: -6,
+               width: "100%",
+               flexDirection: "row",
+               alignItems: "center",
+               justifyContent: "space-between",
+            }}>
             <Text style={styles.cardTitulo}>{title.length > 30 ? title.substring(0, 29).concat("...") : title}</Text>
 
-            <Button image={favorite ? StarOn : StarOff} style={{borderWidth: 0}} onPress={toggleFavorite} />
+            <Button image={favorite ? StarOn : StarOff} style={{ borderWidth: 0 }} onPress={toggleFavorite} />
          </View>
          <View style={styles.dividerContainer}>
             <View style={styles.divider} />
@@ -42,12 +49,12 @@ export const CardSonho = ({ sonho }: CardSonhoProps) => {
          <Text style={[styles.cardText, { minHeight: 60 }]}>
             {descricao.length > 144 ? descricao.substring(0, 143).concat("...") : descricao}
          </Text>
-          <View style={styles.tagsContainer}>
-             {tags.length > 0 &&
-                tags.map(tag => {
-                   return <Badge key={tag.id} tag={tag} />;
-                })}
-          </View>
+         <View style={styles.tagsContainer}>
+            {tags.length > 0 &&
+               tags.map(tag => {
+                  return <Badge key={tag.id} tag={tag} />;
+               })}
+         </View>
       </TouchableOpacity>
    );
 };

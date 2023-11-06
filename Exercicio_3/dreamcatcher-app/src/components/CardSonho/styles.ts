@@ -14,8 +14,6 @@ export const styles = StyleSheet.create({
       backgroundColor: "#5C5FB2",
    },
    cardTitulo: {
-      marginBottom: -6,
-
       color: "white",
       fontSize: 18,
       fontWeight: "700",
@@ -43,10 +41,11 @@ export const styles = StyleSheet.create({
       lineHeight: 14,
    },
    tagsContainer: {
-      width: "100%",
       flex: 1,
       flexDirection: "row",
+      justifyContent: "flex-start",
+      alignItems: "center",
       flexWrap: "wrap",
-      gap: 18,
+      gap: 12,
    },
 });

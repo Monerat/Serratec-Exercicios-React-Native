@@ -41,7 +41,6 @@ export const styles = StyleSheet.create({
       lineHeight: 14,
    },
    tagsContainer: {
-      // width: "100%",
       flex: 1,
       flexDirection: "row",
       justifyContent: "flex-start",
