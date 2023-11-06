@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { View, Image, Text, FlatList, ActivityIndicator } from "react-native";
+import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
 import { SvgXml } from "react-native-svg";
 
 import SleepingCat from "../../assets/sleeping-icon.png";
 
 
 import { Button } from "../../components/Button";
-import { ModalSonho } from "../../components/Modais/ModalSonhos";
 import { CardSonho } from "../../components/CardSonho";
+import { ModalSonho } from "../../components/Modais/ModalSonhos";
 
-import { styles } from "./styles";
 import { ApiConfig, Phase, getMoonPhase } from "../../services/api";
+import { styles } from "./styles";
 
 export interface Sonho {
    id?: string;
@@ -40,7 +40,7 @@ export const HomeComponent = () => {
 
    useEffect(() => {
       getMoonPhaseDiaAtual();
-   });
+   }),[];
 
    function criarSonhoCard(sonho: Sonho) {
       const id = "S" + Math.floor(Math.random() * 1000);
