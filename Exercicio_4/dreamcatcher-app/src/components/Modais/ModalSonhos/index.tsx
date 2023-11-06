@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, ModalProps, ScrollView, View } from "react-native";
 
 import { Sonho, TagDataProps } from "../../../components/HomeComponent";
 import { Button } from "../../Button";
 import { FormInput } from "../../Inputs/FormInput";
-
 
 import PencilIcon from "../../../assets/PencilIcon.png";
 import PupilCatIcon from "../../../assets/pupil-cat.png";
@@ -14,13 +13,15 @@ import { styles } from "./styles";
 interface modalProps extends ModalProps {
    modal: boolean;
    setModal: React.Dispatch<React.SetStateAction<boolean>>;
-   salvar: (sonho: Sonho) => void;
+   salvar?: (sonho: Sonho) => void;
    sonhoEdit?: Sonho;
+   setSonhoEdit?: React.Dispatch<React.SetStateAction<Sonho>>
    acao: "criar" | "editar";
 }
 
-export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props }: modalProps) => {
-   const [id, setId] = useState<string>("")
+export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, setSonhoEdit, ...props }: modalProps) => {
+
+   const [id, setId] = useState<string>("");
    const [title, setTitle] = useState<string>("");
    const [data, setData] = useState<string>(new Date().toLocaleDateString());
    const [dataEditable, setDataEditable] = useState<boolean>(false);
@@ -30,12 +31,16 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
    const [newTag, setNewTag] = useState<string>("");
    const badgeTouchable = true;
 
-   useEffect(()=>{
-      acao ==="editar" && settSonhoEdit()
-   },[])
+   useEffect(() => {
+      acao === "editar" && settSonhoEdit();
+   }, []);
 
    const handlePress = () => {
-      salvar({ id, title, data, descricao, favorite, tags })
+      const sonhoSelecionado = { id, title, data, descricao, favorite, tags };
+
+      acao === "editar" && setSonhoEdit(sonhoSelecionado)
+
+      salvar && salvar(sonhoSelecionado);
       setModal(!modal);
    };
 
@@ -45,7 +50,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
          const novaTag = { id: id, name: newTag };
 
          setTags([...tags, novaTag]);
-      };
+      }
 
       setNewTag("");
    };
@@ -56,11 +61,12 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
       setTags(novoArray);
    };
 
-   const settSonhoEdit = () =>{
+   const settSonhoEdit = () => {
       setId(sonhoEdit.id);
       setTitle(sonhoEdit.title);
       setData(sonhoEdit.data);
       setDescricao(sonhoEdit.descricao);
+      setFavorite(sonhoEdit.favorite);
       setTags(sonhoEdit.tags);
    };
 
@@ -99,7 +105,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
                      onChangeText={setDescricao}
                      multiline
                   />
-                  <View style={{ width: "100%", gap: 8}}>
+                  <View style={{ width: "100%", gap: 8 }}>
                      <FormInput
                         label="Tag:"
                         placeholder="Digite uma Tag"
@@ -115,7 +121,12 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
                         {tags.length > 0 &&
                            tags.map(tag => {
                               return (
-                                 <Badge<{touchable: typeof badgeTouchable}> key={tag.id} tag={tag} touchable={badgeTouchable} onPress={()=>removeTag(tag.id)} />
+                                 <Badge<{ touchable: typeof badgeTouchable }>
+                                    key={tag.id}
+                                    tag={tag}
+                                    touchable={badgeTouchable}
+                                    onPress={() => removeTag(tag.id)}
+                                 />
                               );
                            })}
                      </View>
@@ -131,7 +142,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
                         marginTop: 28,
                      }}>
                      <Button text="Cancelar" buttonStyle="secondary" onPress={() => setModal(!modal)} />
-                     <Button text="Salvar" onPress={handlePress} />
+                     <Button text={acao} onPress={handlePress} />
                   </View>
                </ScrollView>
             </View>

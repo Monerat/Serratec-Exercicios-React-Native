@@ -14,12 +14,13 @@ import { styles } from "./styles";
 interface modalProps extends ModalProps {
    modal: boolean;
    setModal: React.Dispatch<React.SetStateAction<boolean>>;
-   salvar: (sonho: Sonho) => void;
+   salvar?: (sonho: Sonho) => void;
    sonhoEdit?: Sonho;
+   setSonhoEdit?: React.Dispatch<React.SetStateAction<Sonho>>;
    acao: "criar" | "editar";
 }
 
-export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props }: modalProps) => {
+export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, setSonhoEdit, ...props }: modalProps) => {
    const [id, setId] = useState<string>("")
    const [title, setTitle] = useState<string>("");
    const [data, setData] = useState<string>(new Date().toLocaleDateString());
@@ -35,7 +36,11 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
    },[])
 
    const handlePress = () => {
-      salvar({ id, title, data, descricao, favorite, tags })
+      const sonhoSelecionado = { id, title, data, descricao, favorite, tags };
+
+      acao === "editar" && setSonhoEdit(sonhoSelecionado)
+
+      salvar(sonhoSelecionado);
       setModal(!modal);
    };
 
@@ -61,6 +66,7 @@ export const ModalSonho = ({ modal, setModal, salvar, acao, sonhoEdit, ...props 
       setTitle(sonhoEdit.title);
       setData(sonhoEdit.data);
       setDescricao(sonhoEdit.descricao);
+      setFavorite(sonhoEdit.favorite)
       setTags(sonhoEdit.tags);
    };
 
