@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, ImageBackground, Image, TextInput, TouchableOpacity, ScrollView } from "react-native";
+import { Image, ImageBackground, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 import { styles } from "./styles";
 
+import PencilIcon from "./src/assets/PencilIcon.png";
 import BgImage from "./src/assets/bg-padrao.png";
 import PupilCatIcon from "./src/assets/pupil-cat.png";
-import PencilIcon from "./src/assets/PencilIcon.png";
 import SleepingCat from "./src/assets/sleeping-icon.png";
 
 export default function App() {
@@ -42,7 +42,7 @@ export default function App() {
                      <Image
                         source={PencilIcon}
                         resizeMode="contain"
-                        style={{ height: 32, width: 32, tintColor: "white", transform: [{ rotate: "45deg" }] }}
+                        style={{ height: 32, width: 32, tintColor: "white"}}
                      />
                   </TouchableOpacity>
                </View>
