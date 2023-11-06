@@ -37,7 +37,7 @@ export const HomeComponent = () => {
    return (
          <View style={styles.container}>
             
-            <View style={{ flex: 0.2, justifyContent: "flex-end"}}>
+            <View style={{ flex: 0.2, justifyContent: "center"}}>
                <Button
                   text="Adicionar Sonho"
                   styleAdjustments={{ maxWidth: "50%", maxHeight: "50%", minHeight: 50 }}
