@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { SvgXml } from "react-native-svg";
 
-import SleepingCat from "../../assets/sleeping-icon.png";
 
 
 import { Button } from "../../components/Button";
@@ -11,6 +10,7 @@ import { ModalSonho } from "../../components/Modais/ModalSonhos";
 
 import { FavoritesContext } from "../../contexts/FavoritesContext";
 import { ApiConfig, Phase, getMoonPhase } from "../../services/api";
+import { EmptyMessage } from "../EmptyMessage/EmptyMessage";
 import { styles } from "./styles";
 
 export interface Sonho {
@@ -131,9 +131,8 @@ export const HomeComponent = () => {
                renderItem={({ item, index }) => <CardSonho sonho={item} />}
             />
          ) : (
-            <View style={styles.sonhoContainer}>
-               <Image source={SleepingCat} style={{ tintColor: "white" }} />
-               <Text style={styles.textBase}>Ops, parece que não tem nenhum sonho aqui</Text>
+            <View style={{flex:1}}>
+               <EmptyMessage />
             </View>
          )}
          {modalAberto && (

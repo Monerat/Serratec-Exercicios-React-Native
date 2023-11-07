@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { View, Image, Text, FlatList } from "react-native";
+import { FlatList, View } from "react-native";
 
-import SleepingCat from "../../assets/sleeping-icon.png";
 
-import { styles } from "./styles";
-import { CardSonho } from "../CardSonho";
-import { Sonho } from "../HomeComponent";
 import { FavoritesContext } from "../../contexts/FavoritesContext";
+import { CardSonho } from "../CardSonho";
+import { EmptyMessage } from "../EmptyMessage/EmptyMessage";
+import { Sonho } from "../HomeComponent";
+import { styles } from "./styles";
 
 export const FavoritesComponent = () => {
    const {sonhosArray} = useContext(FavoritesContext)
@@ -32,9 +32,8 @@ export const FavoritesComponent = () => {
                renderItem={({ item, index }) => <CardSonho sonho={item} />}
             />
          ) : (
-            <View style={styles.sonhoContainer}>
-               <Image source={SleepingCat} style={{ tintColor: "white" }} />
-               <Text style={styles.textBase}>Ops, parece que não tem nenhum sonho aqui</Text>
+            <View style={{flex:1}}>
+               <EmptyMessage />
             </View>
          )}
       </View>
