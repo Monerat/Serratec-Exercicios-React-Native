@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FlatList, KeyboardAvoidingView, View } from "react-native";
+import { FlatList, KeyboardAvoidingView, Platform, View } from "react-native";
 
 import { Button } from "../../components/Button";
 import { CardSonho } from "../../components/CardSonho";
@@ -37,7 +37,7 @@ export const HomeComponent = () => {
    };
 
    return (
-      <KeyboardAvoidingView behavior="height" keyboardVerticalOffset={-350} style={styles.container}>
+      <KeyboardAvoidingView behavior="height" keyboardVerticalOffset={Platform.OS === "android" && -350} style={styles.container}>
          <View style={styles.formContainer}>
             <FormInput label="Adicione um sonho" placeholder="Digite um título" value={title} onChangeText={setTitle} />
             <FormInput
