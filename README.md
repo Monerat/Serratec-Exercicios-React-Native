@@ -43,6 +43,7 @@
         <li><a href="#exercicio-6">Exercicio 6</a></li>
       </ul>
     </ul>
+    <li><a href="#contribuidores">Contribuidores</a></li>
     <li><a href="#contato">Contato</a></li>
   </ol>
 </details>
@@ -235,6 +236,36 @@ Cada pasta contém a etapa anterior completa, e dever ser utilizada para continu
  </div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Contribuidores
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/frederico-sheremetieff-0a6759190/">
+        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/82114311?v=4" width="100px;" alt=""/>
+        <br />
+        <sub><b>Frederico Sheremetieff</b></sub>
+      </a>
+      <br />
+       <br />
+      <a href="https://www.linkedin.com/in/frederico-sheremetieff-0a6759190/" title="LindedIn">
+        <img src="https://img.shields.io/badge/-Frederico-blue?style=flat-square&logo=Linkedin&logoColor=white" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/pedrobragaresume/">
+        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/111090976?v=4" width="100px;" alt=""/>
+        <br />
+        <sub><b>Pedro Braga</b></sub>
+      </a>
+      <br />
+       <br />
+      <a href="https://www.linkedin.com/in/pedrobragaresume/" title="LindedIn">
+        <img src="https://img.shields.io/badge/-Frederico-blue?style=flat-square&logo=Linkedin&logoColor=white" />
+      </a>
+    </td>
+  </tr>
+</table>
 
 <!-- CONTACT -->
 
