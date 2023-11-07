@@ -261,7 +261,7 @@ Cada pasta contém a etapa anterior completa, e dever ser utilizada para continu
       <br />
        <br />
       <a href="https://www.linkedin.com/in/pedrobragaresume/" title="LindedIn">
-        <img src="https://img.shields.io/badge/-Frederico-blue?style=flat-square&logo=Linkedin&logoColor=white" />
+        <img src="https://img.shields.io/badge/-Pedro-blue?style=flat-square&logo=Linkedin&logoColor=white" />
       </a>
     </td>
   </tr>
