@@ -1,13 +1,11 @@
-import { Image, ImageBackground } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { Image } from "react-native";
 
-import { Home } from "../screens/Home";
-import { Favorite } from "../screens/Favorite";
 
-import Diario from "../assets/journal.png";
 import BgImage from "../assets/bg-padrao.png";
 import StarFilled from "../assets/favorite-true.png";
+import Diario from "../assets/journal.png";
 import { StackFavoritosDetailsRoute, StackHomeDetailsRoute } from "./StackNavigation";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();

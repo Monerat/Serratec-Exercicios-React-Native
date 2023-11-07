@@ -52,7 +52,7 @@ export const HomeComponent = () => {
    return (
       <KeyboardAvoidingView
          behavior="height"
-         keyboardVerticalOffset={Platform.OS === "android" && -350}
+         keyboardVerticalOffset={Platform.OS === "android" && -500}
          style={styles.container}>
          <View style={styles.formContainer}>
             <FormInput label="Adicione um sonho" placeholder="Digite um título" value={title} onChangeText={setTitle} />
