@@ -1,7 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home, Sonho, TagDataProps } from "../screens/Home";
-import { SonhoDetails } from "../screens/SonhoDetails";
+import { Sonho } from "../components/HomeComponent";
 import { Favorite } from "../screens/Favorite";
+import { Home } from "../screens/Home";
+import { SonhoDetails } from "../screens/SonhoDetails";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
