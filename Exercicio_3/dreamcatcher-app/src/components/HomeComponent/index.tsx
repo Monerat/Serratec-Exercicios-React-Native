@@ -20,11 +20,10 @@ export const HomeComponent = () => {
    const [id, setId] = useState<string | null>(null);
    const [title, setTitle] = useState<string>("");
    const [descricao, setDescricao] = useState<string>("");
-   const [favorite, setFavorite] = useState<boolean>(false);
 
    function criarSonhoCard() {
       const generatedId = "S" + Math.floor(Math.random() * 1000);
-      const sonhoSelecionado = { id: id ?? generatedId, title, descricao, favorite };
+      const sonhoSelecionado = { id: id ?? generatedId, title, descricao, favorite: false };
 
       setSonhosArray([sonhoSelecionado, ...sonhosArray]);
       limparInputs([setTitle, setDescricao]);

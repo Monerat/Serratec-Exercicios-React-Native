@@ -13,6 +13,7 @@ interface CardSonhoProps {
 
 export const CardSonho = ({ sonho }: CardSonhoProps) => {
    const { id, title, descricao, favorite } = sonho;
+
    const toggleFavorite = () => {
       console.log("Favorite clicado", sonho.favorite);
    };

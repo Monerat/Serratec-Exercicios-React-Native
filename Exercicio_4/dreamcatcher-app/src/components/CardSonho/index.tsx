@@ -1,23 +1,23 @@
-import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { Text, TouchableOpacity, View } from "react-native";
 
-import StarOn from "../../assets/favorite-true.png";
 import StarOff from "../../assets/favorite-false.png";
-import { Sonho } from "../HomeComponent";
-import { Badge } from "../Badges/Badge";
+import StarOn from "../../assets/favorite-true.png";
 import { RootStackParamList } from "../../routes/StackNavigation";
+import { Sonho } from "../HomeComponent";
 
-import { styles } from "./styles";
 import { Button } from "../Button";
+import { styles } from "./styles";
 
 type CardSonhoNavigationProp = StackNavigationProp<RootStackParamList, "SonhosStack">;
 interface CardSonhoProps {
    sonho: Sonho;
+   atualizaFavoritos?: (sonhoSelecionado: Sonho) => void;
 }
 
-export const CardSonho = ({ sonho }: CardSonhoProps) => {
-   const { id, title, data, descricao, favorite, tags } = sonho;
+export const CardSonho = ({ sonho, atualizaFavoritos }: CardSonhoProps) => {
+   const { id, title, descricao, favorite } = sonho;
    const nav = useNavigation<CardSonhoNavigationProp>();
 
    const handleNavigation = () => {
@@ -25,11 +25,12 @@ export const CardSonho = ({ sonho }: CardSonhoProps) => {
    };
 
    const toggleFavorite = () => {
-      console.log("Favorite clicado", sonho.favorite);
+      atualizaFavoritos ? atualizaFavoritos(sonho) : console.error({status: 404, message: "método not found"});
+      
    };
 
    return (
-      <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={handleNavigation}>
+      <TouchableOpacity activeOpacity={0.8} style={styles.card} onLongPress={handleNavigation}>
          <View
             style={{
                marginBottom: -6,
@@ -42,19 +43,9 @@ export const CardSonho = ({ sonho }: CardSonhoProps) => {
 
             <Button image={favorite ? StarOn : StarOff} style={{ borderWidth: 0 }} onPress={toggleFavorite} />
          </View>
-         <View style={styles.dividerContainer}>
-            <View style={styles.divider} />
-            <Text style={styles.cardText}>{data}</Text>
-         </View>
          <Text style={[styles.cardText, { minHeight: 60 }]}>
             {descricao.length > 144 ? descricao.substring(0, 143).concat("...") : descricao}
          </Text>
-         <View style={styles.tagsContainer}>
-            {tags.length > 0 &&
-               tags.map(tag => {
-                  return <Badge key={tag.id} tag={tag} />;
-               })}
-         </View>
       </TouchableOpacity>
    );
 };

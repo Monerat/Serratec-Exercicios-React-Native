@@ -2,8 +2,9 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
    formInputContainer: {
-      flex: 1,
+      width: "100%",
 
+      flex: 1,
       flexDirection: "column",
       alignItems: "flex-start",
       gap: 8,
@@ -13,6 +14,7 @@ export const styles = StyleSheet.create({
       textAlign: "left",
       fontWeight: "700",
       color: "white",
+      padding: "2%"
    },
    textBase: {
       textAlign: "center",
@@ -21,6 +23,7 @@ export const styles = StyleSheet.create({
       fontWeight: "400",
       color: "white",
    },
+
    textInput: {
       width: "100%",
       minHeight: 32,
@@ -55,8 +58,9 @@ export const styles = StyleSheet.create({
       color: "white",
    },
    formMultilineInputContainer: {
-      flex: 4,
+      width: "100%",
 
+      flex: 4,
       flexDirection: "column",
       alignItems: "stretch",
       gap: 8,
