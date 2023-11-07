@@ -4,6 +4,8 @@ export const styles = StyleSheet.create({
    button: {
       alignItems: "center",
       justifyContent: "center",
+      paddingHorizontal: "5%",
+      paddingVertical: "2%",
 
       borderRadius: 30,
       borderColor: "#DD8EEA",
@@ -15,6 +17,8 @@ export const styles = StyleSheet.create({
    buttonSecondary: {
       alignItems: "center",
       justifyContent: "center",
+      paddingHorizontal: "5%",
+      paddingVertical: "2%",
 
       borderRadius: 30,
       borderColor: "#DD8EEA",
@@ -23,23 +27,19 @@ export const styles = StyleSheet.create({
    buttonVariant: {
       alignItems: "center",
       justifyContent: "center",
+      paddingHorizontal: "5%",
+      paddingVertical: "2%",
 
       borderRadius: 30,
    },
 
    buttonText: {
-      marginHorizontal: "10%",
-      marginVertical: "7%",
-
       color: "white",
       fontSize: 14,
       fontWeight: "bold",
       textTransform: "uppercase",
    },
    buttonTextSecondary: {
-      marginHorizontal: "10%",
-      marginVertical: "7%",
-
       color: "#DD8EEA",
       fontSize: 14,
       fontWeight: "bold",

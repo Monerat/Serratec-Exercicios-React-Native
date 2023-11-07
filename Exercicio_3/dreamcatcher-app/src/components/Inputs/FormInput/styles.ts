@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
       textAlign: "left",
       fontWeight: "700",
       color: "white",
+      padding: "2%"
    },
    textBase: {
       textAlign: "center",

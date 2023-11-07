@@ -7,12 +7,17 @@ export const styles = StyleSheet.create({
       alignItems: "center",
       paddingTop: StatusBar.currentHeight * 2,
       paddingHorizontal: 36,
+      gap:16
    },
    formContainer: {
       width: "100%",
-      flex: 0.8,
+      minHeight: 80,
+
+      flex: 0.6,
       flexDirection: "column",
-      gap: 40
+      alignItems: "center",
+      gap: 32
+
    },
    contentContainer:{
       width: "100%",

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FlatList, ScrollView, View } from "react-native";
+import { FlatList, KeyboardAvoidingView, View } from "react-native";
 
 import { Button } from "../../components/Button";
 import { CardSonho } from "../../components/CardSonho";
@@ -37,8 +37,8 @@ export const HomeComponent = () => {
    };
 
    return (
-      <View style={styles.container}>
-         <ScrollView style={styles.formContainer} contentContainerStyle={styles.contentContainer}>
+      <KeyboardAvoidingView behavior="height" keyboardVerticalOffset={-350} style={styles.container}>
+         <View style={styles.formContainer}>
             <FormInput label="Adicione um sonho" placeholder="Digite um título" value={title} onChangeText={setTitle} />
             <FormInput
                label="Descrição:"
@@ -52,18 +52,20 @@ export const HomeComponent = () => {
                styleAdjustments={{ maxWidth: "80%", maxHeight: "50%", minHeight: 50 }}
                onPress={() => criarSonhoCard()}
             />
-         </ScrollView>
+         </View>
          {sonhosArray.length !== 0 ? (
             <FlatList
                data={sonhosArray}
                showsVerticalScrollIndicator={false}
-               style={{ width: "100%", flex: 1 }}
+               style={{ width: "85%", flex: 1 }}
                keyExtractor={data => data.id!}
                renderItem={({ item, index }) => <CardSonho sonho={item} />}
             />
          ) : (
-            <EmptyMessage />
+            <View style={{flex:1}}>
+               <EmptyMessage />
+            </View>
          )}
-      </View>
+      </KeyboardAvoidingView>
    );
 };
