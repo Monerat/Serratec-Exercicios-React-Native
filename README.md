@@ -9,7 +9,7 @@
 <h3 align="center">Serratec Classes</h3>
 
   <p align="center">
-    Projeto feito para aulas em React Native, o mesmo aplicativo foi feito no Expo e no Cli. Um slide para acompanhamento foi criado.
+    Projeto feito para aulas em React Native.
   </p>
 </div>
 
@@ -19,21 +19,11 @@
   <ol>
     <li>
       <a href="#about-the-project">Sobre o projeto</a>
-      <ul>
-        <li><a href="#built-with">Feito com</a></li>
-      </ul>
     </li>
     <li>
-      <a href="#getting-started">Iniciando o Projeto</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisitos</a></li>
-        <li><a href="#installation">Instalação</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#usage">Uso</a></li>
+      <a href="#usage">Exercícios</a></li>
     <ul>
-      <li><a href="#content">Conteúdo</a></li>
+      <li><a href="#content">Lista</a></li>
       <ul>
         <li><a href="#exercicio-1">Exercicio 1</a></li>
         <li><a href="#exercicio-2">Exercicio 2</a></li>
@@ -61,72 +51,12 @@
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Built With
-
--  [ReactNative](https://reactnative.dev/)
--  React Native Cli
--  [Expo](https://docs.expo.dev/)
--  JavaScript
--  TypeScript
--  [Axios](https://github.com/axios/axios)
--  [react-navigation](https://reactnavigation.org/docs/getting-started/)
--  [React Native SVG](https://github.com/software-mansion/react-native-svg)
--  [React Native Async Storage](https://react-native-async-storage.github.io/async-storage/)
--  [Moon Phases API](http://www.wdisseny.com/lluna/?lang=en)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Iniciando o projeto
-
-Para conseguir rodar o projeto são nescessário alguns pre-requisitos e a instalação do projeto.
-
-### Prerequisites
-
-Todos os pre-requisitos são explicados em aula e o passo a passo também. Seguindo a documentação https://reactnative.dev/docs/environment-setup.
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/BragaMPedro/ReactNative_2023-2/
-   ```
-2. Vá para pasta do exercício que deseja fazer
-   ```sh
-   cd ReactNative_2023-2/Exercicio_1
-   ```
-3. Instale os pacotes
-   ```sh
-   npm install;
-   ```
-   ou
-   ```sh
-   yarn install;
-   ```
-4. Inicie o projeto
-   ```sh
-   npx expo start;
-   ```
-   ou (caso de emuladores)
-   ```sh
-   yarn android;
-   ```
-   ou
-   ```sh
-   npm android;
-   ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-
-## Uso
+## Exercícios
 
 Esse é um projeto de ensino e feito para isso. Criado para ensinar a criação de componentes, estilização, utilização de contextos, utilização de banco de dados embarcado, utilização de requisições para API e navegação, utilizando typescrypt para todas as etapas.
 Cada pasta contém a etapa anterior completa, e dever ser utilizada para continuar o desenvolvimento do app de acordo com a seção "Conteúdo" deste material.
 
-### Exercícios
+### Lista
 
 #### Exercicio 1
 <div style={{ display: flex, flex-direction: row }}>
